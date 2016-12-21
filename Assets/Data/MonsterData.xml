@@ -1,0 +1,67 @@
+ <MonsterData>
+ 	<Monsters>
+
+ 		<Monster monsterName="Eternal Flame">
+ 			<health> 5 </health>
+ 			<mana> 10 </mana>
+      
+      <stats>
+          <!-- Strength, Vitality, Mind, Will -->
+          <stats> 2 </stats>
+          <stats> 2 </stats>
+          <stats> 4 </stats>
+          <stats> 4 </stats>
+      </stats>
+
+ 			<resistances>
+        <!-- Phys, Fire, Ice, Elec -->
+ 				<resistances> 1 </resistances>
+ 				<resistances> -3 </resistances>
+ 				<resistances> 2 </resistances>
+ 				<resistances> .5 </resistances>
+
+ 			</resistances>
+				
+			<skills>
+        <!-- List of skills used by monster, uses inidices from SkillData.xml -->
+ 				<skills> 0 </skills>
+ 			</skills>
+ 		
+ 			<passives>
+       
+ 			</passives>
+ 		</Monster>
+
+    <Monster monsterName="Squire">
+      <health> 12 </health>
+      <mana> 0 </mana>
+
+      <stats>
+        <!-- Strength, Vitality, Mind, Will -->
+        <stats> 5 </stats>
+        <stats> 7 </stats>
+        <stats> 2 </stats>
+        <stats> 2 </stats>
+      </stats>
+
+      <resistances>
+        <!-- Phys, Fire, Ice, Elec -->
+        <resistances> .5 </resistances>
+        <resistances> 1.5 </resistances>
+        <resistances> .5 </resistances>
+        <resistances> 2 </resistances>
+
+      </resistances>
+
+      <skills>
+        <!-- List of skills used by monster, uses inidices from SkillData.xml -->
+        <skills> 0 </skills>
+      </skills>
+
+      <passives>
+
+      </passives>
+    </Monster>
+    
+ 	</Monsters>
+ </MonsterData>
