@@ -12,6 +12,14 @@ public abstract class Unit : MonoBehaviour
 
     public abstract void Create(Monster monsterValue);
 
+    public abstract IEnumerator StartTurn();
+
     public abstract void UseSkill(int index);
+
+    public IEnumerator MoveTowards(Vector2 TargetPosition)
+    {
+
+        yield return null;
+    }
 
 }

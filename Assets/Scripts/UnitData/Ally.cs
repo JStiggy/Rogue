@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
-public class Enemy : Unit
+public class Ally : Unit
 {
 
     //Create an enemy of specified base stats and any needed values
@@ -13,8 +12,8 @@ public class Enemy : Unit
         currentHealth = monsterValue.health;
         currentMana = monsterValue.mana;
 
-        gameObject.tag = "Enemy";
-        gameObject.layer = 8;
+        gameObject.tag = "Ally";
+        gameObject.layer = 9;
 
         SpriteRenderer p = gameObject.AddComponent<SpriteRenderer>();
         p.sprite = Resources.Load("Units\\" + monsterValue.monsterName, typeof(Sprite)) as Sprite;
@@ -26,7 +25,6 @@ public class Enemy : Unit
 
     public override IEnumerator StartTurn()
     {
-
         yield return null;
     }
 

@@ -80,7 +80,7 @@ public class TargetedSkill : SkillComponent {
 
             yield return null;
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(skill.animationTime);
         //GameManager.Manager.EndTurn();
         Destroy(gameObject);
         yield return null;

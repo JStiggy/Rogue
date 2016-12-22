@@ -14,8 +14,9 @@
       </stats>
 
  			<resistances>
-        <!-- Phys, Fire, Ice, Elec -->
+        <!-- Phys, Arcane, Fire, Ice, Elec -->
  				<resistances> 1 </resistances>
+        <resistances> 1 </resistances>
  				<resistances> -3 </resistances>
  				<resistances> 2 </resistances>
  				<resistances> .5 </resistances>
@@ -45,8 +46,9 @@
       </stats>
 
       <resistances>
-        <!-- Phys, Fire, Ice, Elec -->
+        <!-- Phys, Arcane, Fire, Ice, Elec -->
         <resistances> .5 </resistances>
+        <resistances> 1.5 </resistances>
         <resistances> 1.5 </resistances>
         <resistances> .5 </resistances>
         <resistances> 2 </resistances>

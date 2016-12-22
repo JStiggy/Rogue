@@ -6,8 +6,8 @@
       <type> 0 </type>
 			<name>Fire Burst</name>
       
-      <!-- 0:Phys 1:Fire 2:Ice 3:Elec-->
-			<element> 1 </element>
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+			<element> 2 </element>
       
       <!-- 1:Enemy 2:Ally 3:Any -->
 			<targetType> 3 </targetType>
@@ -33,7 +33,7 @@
 			<critModifier> -255 </critModifier>
 
       <!-- Animation time -->
-      <animTime> 1 </animTime>
+      <animationTime> 10 </animationTime>
       
       <!-- Tile distance from target location -->
 			<splashRange> 1 </splashRange>
@@ -45,8 +45,8 @@
       <type> 1 </type>
       <name>Magic Missle</name>
 
-      <!-- 0:Phys 1:Fire 2:Ice 3:Elec-->
-      <element> 0 </element>
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 1 </element>
 
       <!-- 1:Enemy 2:Ally 3:Any -->
       <targetType> 3 </targetType>
