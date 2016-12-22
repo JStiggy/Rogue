@@ -5,12 +5,14 @@ public class GameManager : MonoBehaviour
 {
     public GameLibrary gameLibrary;
 
+    //Create a singleton to contain all Gamedata
     private static GameManager manager = null;
     public static GameManager Manager
     {
         get { return manager; }
     }
 
+    //If applicable, set up a singleton
     void Awake()
     {
         if (manager != this && manager != null)
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
         gameLibrary = gameObject.AddComponent<GameLibrary>();
     }
 
+    //Create a monster based on the index in the XML file
     public GameObject CreateMonster(int index)
     {
         if(index >= gameLibrary.monsterData.Monsters.Count)

@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Unit
 {
 
-    public Monster monster;
-    public int currentHealth;
-    public int currentMana;
-    public int direction = 2;
-
-    public void Create(Monster monsterValue)
+    //Create an enemy of specified base stats and any needed values
+    public override void Create(Monster monsterValue)
     {
         monster = monsterValue;
         gameObject.name = monsterValue.monsterName;
         currentHealth = monsterValue.health;
         currentMana = monsterValue.mana;
+
         gameObject.tag = "Enemy";
+        gameObject.layer = 8;
+
         SpriteRenderer p = gameObject.AddComponent<SpriteRenderer>();
         p.sprite = Resources.Load("Units\\" + monsterValue.monsterName, typeof(Sprite)) as Sprite;
 
@@ -24,7 +23,8 @@ public class Enemy : MonoBehaviour
         c.size = new Vector2(.3f, .3f);
     }
 
-    public void UseSkill(int index)
+    //Use a skill of the specified index. This will typical use skills in monster.skills. However any skill can be called technically
+    public override void UseSkill(int index)
     {
         Skill skillInfo = GameManager.Manager.gameLibrary.skillData.Skills[index];
         GameObject skill = new GameObject();
@@ -32,21 +32,16 @@ public class Enemy : MonoBehaviour
         switch (skillInfo.type)
         {
             case 0:
-
+                skillComponent = skill.AddComponent<TargetedSkill>();
+                skillComponent.Create(skillInfo, this);
                 break;
             case 1:
                 skillComponent = skill.AddComponent<ProjectileSkill>();
                 skillComponent.Create(skillInfo, this);
                 break;
             case 2:
-
+                // Other skill types need to be added
                 break;
         }
-
-    }
-
-    public void SkillOffensiveProjectile(Skill CurrentSkill)
-    {
-
     }
 }

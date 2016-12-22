@@ -1,16 +1,16 @@
 <SkillData>
 	<Skills>
-		<!-- 0: Fire Burst, Projectile Fire Spell-->
+		<!-- 0: Fire Burst, Targeted Fire Spell-->
 		<Skill>
       <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Heal Targeted  -->
-      <type> 1 </type>
+      <type> 0 </type>
 			<name>Fire Burst</name>
       
       <!-- 0:Phys 1:Fire 2:Ice 3:Elec-->
 			<element> 1 </element>
       
       <!-- 1:Enemy 2:Ally 3:Any -->
-			<targetType> 1 </targetType>
+			<targetType> 3 </targetType>
       
       <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
       <attackType> 2 </attackType>
@@ -30,10 +30,53 @@
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
 			<accModifier> 255 </accModifier>
-			<critModifier> -255 </critModifier> 
+			<critModifier> -255 </critModifier>
+
+      <!-- Animation time -->
+      <animTime> 1 </animTime>
       
       <!-- Tile distance from target location -->
-			<splashRange> 0 </splashRange>
+			<splashRange> 1 </splashRange>
 		</Skill>
-	</Skills>
+
+    <!-- 0: Magic Missle, Projectile Phys Spell-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Heal Targeted  -->
+      <type> 1 </type>
+      <name>Magic Missle</name>
+
+      <!-- 0:Phys 1:Fire 2:Ice 3:Elec-->
+      <element> 0 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 3 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 2 </attackType>
+      <defenseType> 3 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 20 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> .5 </modifierPower>
+
+      <cost> 2 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 255 </accModifier>
+      <critModifier> -255 </critModifier>
+
+      <!-- Animation time -->
+      <animTime> 1 </animTime>
+      
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+    </Skill>
+
+  </Skills>
 </SkillData>

@@ -1,6 +1,7 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
 
+//Container for all data for a skill, Values are described in SkillData.xml
 public class Skill {
     public int type;
     public string name;
@@ -15,5 +16,6 @@ public class Skill {
     public int statusRate;
     public int accModifier;
     public int critModifier;
+    public float animationTime;
     public int splashRange;
 }
