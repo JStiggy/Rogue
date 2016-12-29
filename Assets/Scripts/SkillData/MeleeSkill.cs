@@ -13,7 +13,16 @@ public class MeleeSkill : SkillComponent
         SpriteRenderer sRenderer = gameObject.AddComponent<SpriteRenderer>();
         sRenderer.sprite = Resources.Load("Skills\\" + skill.name, typeof(Sprite)) as Sprite;
 
-        StartCoroutine("SkillSelection");
+        if (caster.currentMana >= skill.cost)
+        {
+            StartCoroutine("SkillSelection");
+        }
+        else
+        {
+            print("No MANA");
+            caster.StartCoroutine("StartTurn");
+            Destroy(gameObject);
+        }
     }
 
     //Iterate through all valid targets based on their distance from the user (5 tiles, 5+2)
@@ -42,6 +51,7 @@ public class MeleeSkill : SkillComponent
             foreach (Collider2D t in targets) SkillEffect(t.GetComponent<Unit>());
             yield return new WaitForSeconds(skill.animationTime);
         }
+        caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
         GameManager.Manager.board.EndTurn();
         Destroy(gameObject);
         yield return null;

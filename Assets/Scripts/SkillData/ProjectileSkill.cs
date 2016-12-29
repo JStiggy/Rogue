@@ -14,7 +14,7 @@ public class ProjectileSkill : SkillComponent {
         this.skill = ability;
         this.caster = cast;
         transform.position = cast.transform.position;
-        transform.rotation = Quaternion.Euler(0, 0, cast.direction * -22.5f);
+        transform.rotation = Quaternion.Euler(0, 0, cast.direction * -45f);
 
         sRenderer = gameObject.AddComponent<SpriteRenderer>();
         sRenderer.sprite = Resources.Load("Skills\\"+skill.name, typeof(Sprite)) as Sprite;
@@ -26,7 +26,16 @@ public class ProjectileSkill : SkillComponent {
         Rigidbody2D r = gameObject.AddComponent<Rigidbody2D>();
         r.isKinematic = true;
 
-        StartCoroutine("SkillSelection");
+        if (caster.currentMana >= skill.cost)
+        {
+            StartCoroutine("SkillSelection");
+        }
+        else
+        {
+            print("No MANA");
+            caster.StartCoroutine("StartTurn");
+            Destroy(gameObject);
+        }
     }
 
     //Fire the skill in the forward direction move forward until an overlap event with a possible target occurs
@@ -34,10 +43,11 @@ public class ProjectileSkill : SkillComponent {
     {
         while(active)
         {
-            this.transform.Translate(transform.right * Time.deltaTime * 10);
+            this.transform.position += Quaternion.Euler(0, 0, -45f * caster.direction) * Camera.main.transform.right * Time.deltaTime * 10;
             yield return null;
         }
         yield return new WaitForSeconds(skill.animationTime);
+        caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
         GameManager.Manager.board.EndTurn();
         Destroy(gameObject);
         yield return null;

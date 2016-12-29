@@ -25,6 +25,7 @@ public class Ally : Unit
 
     public override IEnumerator StartTurn()
     {
+        yield return null;
         Vector3 inputVec = Vector3.zero;
 
         while (true)
@@ -39,6 +40,12 @@ public class Ally : Unit
             {
                 direction = (int)(Vector3.Angle(Vector3.right, inputVec) / 45f);
                 direction = inputVec.y > 0 ? 8 - direction : direction;
+            }
+
+            if(Input.GetButtonDown("Menu"))
+            {
+                GameManager.Manager.board.menu.StartCoroutine("CombatMenu");
+                break;
             }
 
             //Add a fraction of delay after releasing the rotate button
@@ -81,7 +88,7 @@ public class Ally : Unit
 
     public IEnumerator Attack()
     {
-        UseSkill(5);
+        UseSkill(2);
         yield return null;
     }
 

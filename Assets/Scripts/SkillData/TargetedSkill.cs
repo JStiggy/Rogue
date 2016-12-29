@@ -16,8 +16,16 @@ public class TargetedSkill : SkillComponent {
 
         this.skill = ability;
         this.caster = cast;
-
-        StartCoroutine("SkillSelection");
+        if (caster.currentMana >= skill.cost)
+        {
+            StartCoroutine("SkillSelection");
+        }
+        else
+        {
+            print("No MANA");
+            caster.StartCoroutine("StartTurn");
+            Destroy(gameObject);
+        }
     }
 
     //Iterate through all valid targets based on their distance from the user (5 tiles, 5+2)
@@ -64,6 +72,7 @@ public class TargetedSkill : SkillComponent {
                     p.sprite = Resources.Load("Skills\\" + skill.name, typeof(Sprite)) as Sprite;
 
                     yield return new WaitForSeconds(skill.animationTime);
+                    caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
                     GameManager.Manager.board.EndTurn();
                     break;
                 }

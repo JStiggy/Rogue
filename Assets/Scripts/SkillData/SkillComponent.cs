@@ -26,9 +26,8 @@ abstract public class SkillComponent : MonoBehaviour {
                 ApplyHealing(target);
                 break;
         }
-        
+
         ApplyStatus(target);
-        target.currentMana = Mathf.Clamp(target.currentMana - skill.cost, 0, caster.monster.mana);
     }
 
     public void ApplyDamage(Unit target)

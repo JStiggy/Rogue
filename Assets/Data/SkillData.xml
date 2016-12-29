@@ -6,7 +6,7 @@
            4: Healing Targeted   5: Healing Projectile   6: Healing Melee  -->
       <type> 0 </type>
 			<name>Fire Burst</name>
-      
+      <description>Create a burst of fire at a target location, will hit nearby targets</description>
       <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
 			<element> 2 </element>
       
@@ -47,6 +47,8 @@
       <type> 1 </type>
       <name>Magic Missle</name>
 
+      <description>Create a projectile of arcane energy</description>
+      
       <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
       <element> 1 </element>
 
@@ -74,7 +76,7 @@
       <critModifier> -255 </critModifier>
 
       <!-- Animation time -->
-       <animationTime> 1 </animationTime>
+       <animationTime> .1 </animationTime>
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
@@ -86,7 +88,7 @@
            3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
       <type> 2 </type>
       <name>Attack</name>
-
+      <description>This should never be seen by the player</description>
       <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
       <element> 0 </element>
 
@@ -126,7 +128,7 @@
            3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
       <type> 4 </type>
       <name>Potion</name>
-
+      <description>Throw a healing potion restoring whomever is hit</description>
       <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
       <element> 0 </element>
 
@@ -167,6 +169,8 @@
       <type> 5 </type>
       <name>Bandage</name>
 
+      <description>Apply first aid to the target healing minor battle wounds</description>
+      
       <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
       <element> 0 </element>
 
@@ -206,9 +210,11 @@
            3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
       <type> 3 </type>
       <name>Heal</name>
+      
+      <description>Restore an allies being with magical energy</description>
 
       <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
-      <element> 0 </element>
+      <element> 1 </element>
 
       <!-- 1:Enemy 2:Ally 3:Any -->
       <targetType> 2 </targetType>

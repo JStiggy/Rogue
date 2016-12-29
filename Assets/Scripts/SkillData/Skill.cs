@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 public class Skill {
     public int type;
     public string name;
+    public string description;
     public int element;
     public int targetType;
     public int attackType;

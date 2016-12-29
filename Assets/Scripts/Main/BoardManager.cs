@@ -4,16 +4,22 @@ using System.Collections.Generic;
 
 public class BoardManager : MonoBehaviour {
 
+    public List<Unit> allies = null;
     Queue<Unit> unitQueue = null;
+    public BoardMenuManager menu = null;
+    public Unit currentUnit = null;
 
     void Start()
     {
+        menu = GameObject.Find("UI").GetComponent<BoardMenuManager>();
+        allies = new List<Unit>();
         unitQueue = new Queue<Unit>();
         for(int i = 0; i < 4; ++i)
         {
             GameObject p = GameManager.Manager.CreatePlayer(i);
             if (p == null) continue;
             unitQueue.Enqueue( p.GetComponent<Unit>() );
+            allies.Add(p.GetComponent<Unit>());
         }
         GameManager.Manager.CreateMonster(0).transform.position = new Vector3(1, 1, 0);
         EndTurn();
@@ -32,6 +38,8 @@ public class BoardManager : MonoBehaviour {
         {
             unitQueue.Enqueue(t);
             print("Start Turn: " + t.name);
+            currentUnit = t;
+            menu.UpdateHUD();
             t.StartCoroutine("StartTurn");
         }
         else

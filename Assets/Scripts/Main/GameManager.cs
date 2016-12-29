@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         return monster;
     }
 
-    //Index is the save value index, not the monsyter index 0,1,2,3
+    //Index is the save value index, not the monster index 0,1,2,3
     public GameObject CreatePlayer(int index)
     {
         index = playerData.unitID[index];
