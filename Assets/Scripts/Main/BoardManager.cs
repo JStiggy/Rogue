@@ -14,18 +14,30 @@ public class BoardManager : MonoBehaviour {
             GameObject p = GameManager.Manager.CreatePlayer(i);
             if (p == null) continue;
             unitQueue.Enqueue( p.GetComponent<Unit>() );
-        }    
+        }
+        GameManager.Manager.CreateMonster(0).transform.position = new Vector3(1, 1, 0);
+        EndTurn();
+
     }
 
     public void EndTurn()
     {
         Unit t = unitQueue.Dequeue();
-        while(t.currentHealth <= 0)
+        while(t.currentHealth <= 0 && unitQueue.Count > 0)
         {
             Destroy(t.gameObject);
             t = unitQueue.Dequeue();
         }
-        t.StartCoroutine("StartTurn");
-        
+        if (unitQueue.Count != 0 || t.currentHealth > 0)
+        {
+            unitQueue.Enqueue(t);
+            print("Start Turn: " + t.name);
+            t.StartCoroutine("StartTurn");
+        }
+        else
+        {
+            //So this case really shouldnt happen during standard gameplay, I ran into it during testing on a blank scene with only the player, targeted myself and died
+             print("This case shouldn't really happen, you dismissed all allies, killed all enemies and then targeted yourself with an attack/died from poison. Why?");
+        }
     }
 }

@@ -51,11 +51,10 @@ public class GameManager : MonoBehaviour
     //Index is the save value index, not the monsyter index 0,1,2,3
     public GameObject CreatePlayer(int index)
     {
-        print(index);
         index = playerData.unitID[index];
         if (index < 0) return null;
         GameObject ally = new GameObject();
-        Enemy traits = ally.AddComponent<Enemy>();
+        Ally traits = ally.AddComponent<Ally>();
         traits.Create(gameLibrary.monsterData.Monsters[index]);
         return ally;
     }

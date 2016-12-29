@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Assumes that walls exist everywhere, needs to collide to end the skill effect
 public class ProjectileSkill : SkillComponent {
 
     bool active = true;
 
     SpriteRenderer sRenderer;
-    Unit caster;
 
     //Create the skill getting info about the caster and the skill used
     public override void Create(Skill ability, Unit cast)
@@ -38,27 +38,9 @@ public class ProjectileSkill : SkillComponent {
             yield return null;
         }
         yield return new WaitForSeconds(skill.animationTime);
-        //GameManager.Manager.EndTurn();
+        GameManager.Manager.board.EndTurn();
         Destroy(gameObject);
         yield return null;
-    }
-
-    //Check for all applicable targets after a hit occurs
-    Collider2D[] SplashTargets(Vector3 position)
-    {
-        new Vector2(skill.splashRange, skill.splashRange);
-        if (skill.targetType == 3)
-        {
-            return Physics2D.OverlapBoxAll(position, new Vector2(skill.splashRange+1, skill.splashRange+1), 45f, 1 << 8 | 1 << 9);
-        }
-        else if (skill.targetType == 2)
-        {
-            return Physics2D.OverlapBoxAll(position, new Vector2(skill.splashRange + 1, skill.splashRange + 1), 45f, 1 << caster.gameObject.layer);
-        }
-        else
-        {
-            return Physics2D.OverlapBoxAll(position, new Vector2(skill.splashRange + 1, skill.splashRange + 1), 45f, ((1 << caster.gameObject.layer) ^ (1 << 8 | 1 << 9)));
-        }
     }
 
     //Check for any collisons then check all hit targets applying skill effects to them
@@ -66,8 +48,9 @@ public class ProjectileSkill : SkillComponent {
     {
         if (hit.gameObject.tag == "Wall")
         {
+            sRenderer.enabled = false;
             active = false;
-            Collider2D[] targets = SplashTargets(hit.gameObject.transform.position);
+            Collider2D[] targets = SplashTargets(hit.gameObject.transform.position, skill.splashRange, caster);
             if(targets.Length == 0)
             {
                 print("No Targets");
@@ -80,8 +63,9 @@ public class ProjectileSkill : SkillComponent {
         }
         else if (hit.gameObject.tag != caster.gameObject.tag && hit.gameObject != caster.gameObject)
         {
+            sRenderer.enabled = false;
             active = false;
-            Collider2D[] targets = SplashTargets(hit.gameObject.transform.position);
+            Collider2D[] targets = SplashTargets(hit.gameObject.transform.position, skill.splashRange, caster);
             foreach (Collider2D t in targets)
             {
                 SkillEffect(t.GetComponent<Unit>());
@@ -89,28 +73,13 @@ public class ProjectileSkill : SkillComponent {
         }
         else if (hit.gameObject.tag == caster.gameObject.tag && hit.gameObject != caster.gameObject && skill.targetType >= 2)
         {
+            sRenderer.enabled = false;
             active = false;
-            Collider2D[] targets = SplashTargets(hit.gameObject.transform.position);
+            Collider2D[] targets = SplashTargets(hit.gameObject.transform.position, skill.splashRange, caster);
             foreach (Collider2D t in targets)
             {
                 SkillEffect(t.GetComponent<Unit>());
             }
-        }
-
-    }
-
-    //Apply skill effects to the targets
-    public override void SkillEffect(Unit target)
-    {
-        sRenderer.enabled = false;
-        if (skill.modifierPower > 0 || skill.flatPower > 0)
-        {
-            int crit = (Random.Range(0, 255) + skill.critModifier) > (255 * .95f)  ? 2 : 1;
-            int damage = (int) ((skill.modifierPower * caster.monster.stats[skill.attackType] + skill.flatPower) / target.monster.stats[skill.defenseType] * target.monster.resistances[skill.element]) * crit ;
-            if (crit == 2)
-                print(target.monster.monsterName + " takes " + damage + "!");
-            else
-                print(target.monster.monsterName + " takes " + damage);
         }
     }
 }

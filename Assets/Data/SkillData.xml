@@ -2,7 +2,8 @@
 	<Skills>
 		<!-- 0: Fire Burst, Targeted Fire Spell-->
 		<Skill>
-      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Heal Targeted  -->
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           4: Healing Targeted   5: Healing Projectile   6: Healing Melee  -->
       <type> 0 </type>
 			<name>Fire Burst</name>
       
@@ -33,15 +34,16 @@
 			<critModifier> -255 </critModifier>
 
       <!-- Animation time -->
-      <animationTime> 10 </animationTime>
+      <animationTime> 1 </animationTime>
       
       <!-- Tile distance from target location -->
 			<splashRange> 1 </splashRange>
 		</Skill>
 
-    <!-- 0: Magic Missle, Projectile Phys Spell-->
+    <!-- 1: Magic Missle, Projectile Arcane Spell-->
     <Skill>
-      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Heal Targeted  -->
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
       <type> 1 </type>
       <name>Magic Missle</name>
 
@@ -72,7 +74,167 @@
       <critModifier> -255 </critModifier>
 
       <!-- Animation time -->
-      <animTime> 1 </animTime>
+       <animationTime> 1 </animationTime>
+      
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+    </Skill>
+    
+    <!-- 2: Basic Attack, Melee Phys Skill-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
+      <type> 2 </type>
+      <name>Attack</name>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 0 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 1 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 0 </attackType>
+      <defenseType> 1 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 10 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> 1.1 </modifierPower>
+
+      <cost> 0 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 0 </accModifier>
+      <critModifier> -0 </critModifier>
+
+      <!-- Animation time -->
+       <animationTime> .15 </animationTime>
+      
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+    </Skill>
+    
+    <!-- 3: Throw Potion, Projectile Heal Skill-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
+      <type> 4 </type>
+      <name>Potion</name>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 0 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 4 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 0 </attackType>
+      <defenseType> 0 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 100 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> 0 </modifierPower>
+
+      <cost> 0 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 0 </accModifier>
+      <critModifier> -0 </critModifier>
+
+      <!-- Animation time -->
+       <animationTime> .15 </animationTime>
+      
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+    </Skill>
+
+    <!-- 4: Bandage, Melee Heal Skill-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
+      <type> 5 </type>
+      <name>Bandage</name>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 0 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 2 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 3 </attackType>
+      <defenseType> 0 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 75 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> 1.5 </modifierPower>
+
+      <cost> 3 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 0 </accModifier>
+      <critModifier> -0 </critModifier>
+
+      <!-- Animation time -->
+       <animationTime> .15 </animationTime>
+      
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+    </Skill>
+
+    <!-- 5: Heal, Targeted Heal Skill-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
+      <type> 3 </type>
+      <name>Heal</name>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 0 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 2 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 3 </attackType>
+      <defenseType> 0 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 75 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> 1.5 </modifierPower>
+
+      <cost> 3 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 0 </accModifier>
+      <critModifier> -0 </critModifier>
+
+      <!-- Animation time -->
+       <animationTime> .15 </animationTime>
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
