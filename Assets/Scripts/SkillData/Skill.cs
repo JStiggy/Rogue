@@ -19,4 +19,5 @@ public class Skill {
     public int critModifier;
     public float animationTime;
     public int splashRange;
+    public int targetRange = 0;
 }

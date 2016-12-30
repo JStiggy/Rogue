@@ -28,12 +28,12 @@ public class TargetedSkill : SkillComponent {
         }
     }
 
-    //Iterate through all valid targets based on their distance from the user (5 tiles, 5+2)
+    //Iterate through all valid targets based on their distance from the user
     public override IEnumerator SkillSelection()
     {
         yield return null;
         //Get all targets in range, make sure a valid target exists or return control to player
-        Collider2D[] targets = SplashTargets(transform.position, 6f, caster);
+        Collider2D[] targets = SplashTargets(transform.position, skill.targetRange, caster);
         if (targets.Length == 0)
         {
             Destroy(this.gameObject);

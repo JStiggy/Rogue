@@ -38,6 +38,7 @@
       
       <!-- Tile distance from target location -->
 			<splashRange> 1 </splashRange>
+      <targetRange> 5 </targetRange>
 		</Skill>
 
     <!-- 1: Magic Missle, Projectile Arcane Spell-->
@@ -121,53 +122,13 @@
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
     </Skill>
-    
-    <!-- 3: Throw Potion, Projectile Heal Skill-->
-    <Skill>
-      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
-           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
-      <type> 4 </type>
-      <name>Potion</name>
-      <description>Throw a healing potion restoring whomever is hit</description>
-      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
-      <element> 0 </element>
 
-      <!-- 1:Enemy 2:Ally 3:Any -->
-      <targetType> 4 </targetType>
-
-      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
-      <attackType> 0 </attackType>
-      <defenseType> 0 </defenseType>
-
-      <!-- Base Damage of the skill -->
-      <flatPower> 100 </flatPower>
-
-      <!-- Multiplier based on attackType stat -->
-      <modifierPower> 0 </modifierPower>
-
-      <cost> 0 </cost>
-
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
-
-      <!-- 255 always hit/crit, -255 never hit/crit-->
-      <accModifier> 0 </accModifier>
-      <critModifier> -0 </critModifier>
-
-      <!-- Animation time -->
-       <animationTime> .15 </animationTime>
-      
-      <!-- Tile distance from target location -->
-      <splashRange> 0 </splashRange>
-    </Skill>
-
-    <!-- 4: Bandage, Melee Heal Skill-->
+    <!-- 3: Potion Item Effect, Melee Heal Skill-->
     <Skill>
       <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
            3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
       <type> 5 </type>
-      <name>Bandage</name>
+      <name>Potion</name>
 
       <description>Apply first aid to the target healing minor battle wounds</description>
       
@@ -182,10 +143,10 @@
       <defenseType> 0 </defenseType>
 
       <!-- Base Damage of the skill -->
-      <flatPower> 75 </flatPower>
+      <flatPower> 100 </flatPower>
 
       <!-- Multiplier based on attackType stat -->
-      <modifierPower> 1.5 </modifierPower>
+      <modifierPower> 0 </modifierPower>
 
       <cost> 3 </cost>
 
@@ -202,9 +163,10 @@
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
+      <targetRange> 1 </targetRange>
     </Skill>
 
-    <!-- 5: Heal, Targeted Heal Skill-->
+    <!-- 4: Heal, Targeted Heal Skill-->
     <Skill>
       <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
            3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
@@ -244,6 +206,7 @@
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
+      <targetRange> 5 </targetRange>
     </Skill>
 
   </Skills>

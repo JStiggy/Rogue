@@ -79,7 +79,6 @@ public class BoardMenuManager : MonoBehaviour {
         int moveSelection = 0;
 
         Unit cUnit = GameManager.Manager.board.currentUnit;
-        print(cUnit.monster.monsterName);
         List<Skill> skills = GameManager.Manager.gameLibrary.skillData.Skills;
 
         string[] element = { "Phys", "Arcane", "Fire", "Ice", "Elec" };
@@ -121,4 +120,55 @@ public class BoardMenuManager : MonoBehaviour {
         combatMenu[1].gameObject.SetActive(false);
         yield return null;
     }
+
+   /* public IEnumerator ItemMenu()
+    {
+        yield return null;
+        combatMenu[1].gameObject.SetActive(true);
+
+        int moveSelection = 0;
+
+        Unit cUnit = GameManager.Manager.board.currentUnit;
+        List<Item> items = GameManager.Manager.items;
+
+        string[] element = { "Phys", "Arcane", "Fire", "Ice", "Elec" };
+
+        skillDescription.text = skills[cUnit.monster.skills[moveSelection]].name + "\n" + skills[cUnit.monster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.monster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.monster.skills[moveSelection]].description;
+        while (true)
+        {
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                GameManager.Manager.board.menu.StartCoroutine("CombatMenu");
+                break;
+            }
+
+            if (Input.GetButtonUp("Menu"))
+            {
+                GameManager.Manager.board.currentUnit.StartCoroutine("StartTurn");
+                break;
+            }
+
+            if (Input.GetButtonDown("Submit"))
+            {
+                GameManager.Manager.board.currentUnit.UseSkill(cUnit.monster.skills[moveSelection]);
+                break;
+            }
+
+            if (Input.GetAxisRaw("Vertical") != 0)
+            {
+                moveSelection -= (int)Input.GetAxisRaw("Vertical");
+                moveSelection = moveSelection >= cUnit.monster.skills.Length ? 0 : moveSelection;
+                moveSelection = moveSelection < 0 ? (cUnit.monster.skills.Length - 1) : moveSelection;
+
+                skillDescription.text = skills[cUnit.monster.skills[moveSelection]].name + "\n" + skills[cUnit.monster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.monster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.monster.skills[moveSelection]].description;
+
+                yield return new WaitForSeconds(menuDelay);
+            }
+            yield return null;
+        }
+        combatMenu[1].gameObject.SetActive(false);
+        yield return null;
+    }*/
+
 }

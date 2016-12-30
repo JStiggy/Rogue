@@ -1,0 +1,24 @@
+ <ItemData>
+ 	<Items>
+ 		<Item>
+      <itemName>Potion</itemName>
+      <!-- Ability to cast on use, -1 will cause a failed action -->
+      <ability> 3 </ability>
+      <!-- Ability to cast on use, -1 will cause a failed action -->
+      <description>Throw a potion to heal a small amount of health to a target.</description>
+      <cost>20</cost>
+      <stackSize>1</stackSize>
+    </Item>
+
+    <Item>
+      <itemName>Healing Orb</itemName>
+      <!-- Ability to cast on use, -1 will cause a failed action -->
+      <ability> 6 </ability>
+      <!-- Ability to cast on use, -1 will cause a failed action -->
+      <description>A small orb containing energy. Casts heal on usage.</description>
+      <cost>50</cost>
+      <stackSize>1</stackSize>
+    </Item>
+    
+ 	</Items>
+ </ItemData>

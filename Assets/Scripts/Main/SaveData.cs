@@ -13,6 +13,7 @@ public class SaveData : ISerializable
     public int[] unitID = { 0, -1, -1, -1 };
     public int[] cHp = { 12, 10, 0, 0 };
     public int[] cMp = { 0, 5, 0, 0 };
+    public int[] inventory = { 0, 0, 1, -1, -1 };
 
     public SaveData() {
         
@@ -23,7 +24,7 @@ public class SaveData : ISerializable
         unitID = (int[])info.GetValue("unitID", typeof(int[]));
         cHp = (int[])info.GetValue("cHp", typeof(int[]));
         cMp = (int[])info.GetValue("cMp", typeof(int[]));
-
+        inventory = (int[])info.GetValue("inventory", typeof(int[]));
     }
 
     //Serialization function.
@@ -32,6 +33,7 @@ public class SaveData : ISerializable
         info.AddValue("unitID", (unitID));
         info.AddValue("cHp", (cHp));
         info.AddValue("cMp", (cMp));
+        info.AddValue("inventory", (cMp));
     }
 
     public void Save()
