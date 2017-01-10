@@ -64,22 +64,22 @@ public class GameManager : MonoBehaviour
     public void LoadInventory()
     {
         inventory = new List<Item>();
-        foreach (int i in playerData.inventory)
+        for (int i = 0; i< playerData.inventory.Length; ++i)
         {
-            if(i == -1)
+            if(playerData.inventory[i] == -1)
             {
                 break;
             }
             else
             {
-                Item item = gameLibrary.itemData.Items[i];
+                Item item = gameLibrary.itemData.Items[playerData.inventory[i]].clone();
                 item.remainingUses = playerData.inventoryStackSize[i];
                 inventory.Add(item);
             }
         }
     }
 
-    public void SaveInvetory()
+    public void SaveInventory()
     {
         for(int i = 0; i < 5; ++i)
         {
@@ -93,6 +93,16 @@ public class GameManager : MonoBehaviour
                 playerData.inventory[i] = -1;
             }
         }
+    }
 
+    public void DecrementInventory(int index)
+    {
+        print("Decrementing: " + index);
+        if (index == -1) return;
+        inventory[index].remainingUses--;
+        if(inventory[index].remainingUses <= 0)
+        {
+            inventory.RemoveAt(index);
+        }
     }
 }

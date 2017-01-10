@@ -55,8 +55,16 @@ public class BoardMenuManager : MonoBehaviour {
                 switch (moveSelection)
                 {
                     case (0):
-                        this.StartCoroutine("ItemMenu");
-                        break;
+                        if(GameManager.Manager.inventory.Count != 0)
+                        {
+                            this.StartCoroutine("ItemMenu");
+                            break;
+                        }
+                        else
+                        {
+                            this.StartCoroutine("CombatMenu");
+                            break;
+                        }
                     case (1):
                         this.StartCoroutine("SpellMenu");
                         break;
@@ -158,7 +166,7 @@ public class BoardMenuManager : MonoBehaviour {
 
             if (Input.GetButtonDown("Submit"))
             {
-                GameManager.Manager.board.currentUnit.UseSkill(items[moveSelection].ability);
+                GameManager.Manager.board.currentUnit.UseSkill(items[moveSelection].ability, moveSelection);
                 break;
             }
 

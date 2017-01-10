@@ -31,7 +31,7 @@ public class Enemy : Unit
     }
 
     //Use a skill of the specified index. This will typical use skills in monster.skills. However any skill can be called technically
-    public override void UseSkill(int index)
+    public override void UseSkill(int index, int itemIndex)
     {
         Skill skillInfo = GameManager.Manager.gameLibrary.skillData.Skills[index];
         GameObject skill = new GameObject();

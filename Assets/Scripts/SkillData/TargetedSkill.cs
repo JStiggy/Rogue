@@ -7,8 +7,9 @@ public class TargetedSkill : SkillComponent {
     SpriteRenderer sRenderer;
 
     //Create the skill adding all needed data, enable targeting
-    public override void Create(Skill ability, Unit cast)
+    public override void Create(Skill ability, Unit cast, int itemIndex)
     {
+        this.item = itemIndex;
         transform.position = cast.transform.position;
 
         sRenderer = gameObject.AddComponent<SpriteRenderer>();

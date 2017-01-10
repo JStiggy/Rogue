@@ -93,7 +93,7 @@ public class Ally : Unit
     }
 
     //Use a skill of the specified index. This will typical use skills in monster.skills. However any skill can be called technically
-    public override void UseSkill(int index)
+    public override void UseSkill(int index, int itemIndex = -1)
     {
         Skill skillInfo = GameManager.Manager.gameLibrary.skillData.Skills[index];
         GameObject skill = new GameObject();
@@ -103,17 +103,17 @@ public class Ally : Unit
             case 0:
             case 3:
                 skillComponent = skill.AddComponent<TargetedSkill>();
-                skillComponent.Create(skillInfo, this);
+                skillComponent.Create(skillInfo, this, itemIndex);
                 break;
             case 1:
             case 4:
                 skillComponent = skill.AddComponent<ProjectileSkill>();
-                skillComponent.Create(skillInfo, this);
+                skillComponent.Create(skillInfo, this, itemIndex);
                 break;
             case 2:
             case 5:
                 skillComponent = skill.AddComponent<MeleeSkill>();
-                skillComponent.Create(skillInfo, this);
+                skillComponent.Create(skillInfo, this, itemIndex);
                 break;
         }
     }

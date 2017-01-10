@@ -6,8 +6,9 @@ abstract public class SkillComponent : MonoBehaviour {
 
     public Skill skill;
     public Unit caster;
+    public int item = -1;
 
-    public abstract void Create(Skill ability, Unit caster);
+    public abstract void Create(Skill ability, Unit caster, int item = -1);
 
     public abstract IEnumerator SkillSelection();
 
@@ -82,6 +83,11 @@ abstract public class SkillComponent : MonoBehaviour {
         {
             return Physics2D.OverlapBoxAll(position, new Vector2(radius, radius), 45f, ((1 << caster.gameObject.layer) ^ (1 << 8 | 1 << 9)));
         }
+    }
+
+    public void OnDestroy()
+    {
+        GameManager.Manager.DecrementInventory(item);
     }
 
 }

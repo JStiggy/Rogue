@@ -8,5 +8,10 @@ public class Item {
     public string description;
     public int cost;
     public int stackSize;
-    public int remainingUses = 1;
+    public int remainingUses;
+
+    public Item clone()
+    {
+        return (Item)this.MemberwiseClone();
+    }
 }

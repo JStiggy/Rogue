@@ -9,8 +9,9 @@ public class ProjectileSkill : SkillComponent {
     SpriteRenderer sRenderer;
 
     //Create the skill getting info about the caster and the skill used
-    public override void Create(Skill ability, Unit cast)
+    public override void Create(Skill ability, Unit cast, int itemIndex = -1)
     {
+        this.item = itemIndex;
         this.skill = ability;
         this.caster = cast;
         transform.position = cast.transform.position;

@@ -5,8 +5,9 @@ public class MeleeSkill : SkillComponent
 {
 
     //Create the skill adding all needed data, enable targeting
-    public override void Create(Skill ability, Unit cast)
+    public override void Create(Skill ability, Unit cast, int itemIndex = -1)
     {
+        this.item = itemIndex;
         this.skill = ability;
         this.caster = cast;
 

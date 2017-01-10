@@ -14,7 +14,8 @@ public class SaveData : ISerializable
     public int[] cHp = { 12, 10, 0, 0 };
     public int[] cMp = { 0, 5, 0, 0 };
     public int[] inventory = { 0, 0, 1, -1, -1 };
-    public int[] inventoryStackSize = { 1, 1, -1, -1, -1 };
+    public int[] inventoryStackSize = { 1, 3, 5, -1, -1 };
+
     public SaveData() {
         
     }
@@ -25,7 +26,7 @@ public class SaveData : ISerializable
         cHp = (int[])info.GetValue("cHp", typeof(int[]));
         cMp = (int[])info.GetValue("cMp", typeof(int[]));
         inventory = (int[])info.GetValue("inventory", typeof(int[]));
-        inventory = (int[])info.GetValue("inventoryStackSize", typeof(int[]));
+        inventoryStackSize = (int[])info.GetValue("inventoryStackSize", typeof(int[]));
     }
 
     //Serialization function.

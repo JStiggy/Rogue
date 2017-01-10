@@ -14,7 +14,7 @@ public abstract class Unit : MonoBehaviour
 
     public abstract IEnumerator StartTurn();
 
-    public abstract void UseSkill(int index);
+    public abstract void UseSkill(int index, int itemIndex = -1);
 
     public IEnumerator MoveTowards(Vector3 deltaPosition, GameObject other)
     {
