@@ -14,7 +14,7 @@ public class SaveData : ISerializable
     public int[] cHp = { 12, 10, 0, 0 };
     public int[] cMp = { 0, 5, 0, 0 };
     public int[] inventory = { 0, 0, 1, -1, -1 };
-
+    public int[] inventoryStackSize = { 1, 1, -1, -1, -1 };
     public SaveData() {
         
     }
@@ -25,6 +25,7 @@ public class SaveData : ISerializable
         cHp = (int[])info.GetValue("cHp", typeof(int[]));
         cMp = (int[])info.GetValue("cMp", typeof(int[]));
         inventory = (int[])info.GetValue("inventory", typeof(int[]));
+        inventory = (int[])info.GetValue("inventoryStackSize", typeof(int[]));
     }
 
     //Serialization function.
@@ -33,13 +34,12 @@ public class SaveData : ISerializable
         info.AddValue("unitID", (unitID));
         info.AddValue("cHp", (cHp));
         info.AddValue("cMp", (cMp));
-        info.AddValue("inventory", (cMp));
+        info.AddValue("inventory", (inventory));
+        info.AddValue("inventoryStackSize", (inventoryStackSize));
     }
 
     public void Save()
     {
-
-
         SaveData data = new SaveData();
         Stream stream = File.Open("Assets\\Data\\player.dat", FileMode.Create);
         BinaryFormatter bformatter = new BinaryFormatter();

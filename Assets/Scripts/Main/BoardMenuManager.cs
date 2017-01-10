@@ -52,7 +52,16 @@ public class BoardMenuManager : MonoBehaviour {
             if (Input.GetButtonDown("Submit"))
             {
                 combatMenuText[moveSelection].fontStyle = FontStyle.Normal;
-                this.StartCoroutine("SpellMenu");
+                switch (moveSelection)
+                {
+                    case (0):
+                        this.StartCoroutine("ItemMenu");
+                        break;
+                    case (1):
+                        this.StartCoroutine("SpellMenu");
+                        break;
+                }
+
                 break;
             }
 
@@ -121,7 +130,7 @@ public class BoardMenuManager : MonoBehaviour {
         yield return null;
     }
 
-   /* public IEnumerator ItemMenu()
+    public IEnumerator ItemMenu()
     {
         yield return null;
         combatMenu[1].gameObject.SetActive(true);
@@ -129,11 +138,9 @@ public class BoardMenuManager : MonoBehaviour {
         int moveSelection = 0;
 
         Unit cUnit = GameManager.Manager.board.currentUnit;
-        List<Item> items = GameManager.Manager.items;
+        List<Item> items = GameManager.Manager.inventory;
 
-        string[] element = { "Phys", "Arcane", "Fire", "Ice", "Elec" };
-
-        skillDescription.text = skills[cUnit.monster.skills[moveSelection]].name + "\n" + skills[cUnit.monster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.monster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.monster.skills[moveSelection]].description;
+        skillDescription.text = items[moveSelection].itemName + "\n" + "Uses: " + items[moveSelection].remainingUses + "\n\n" + items[moveSelection].description;
         while (true)
         {
 
@@ -151,17 +158,17 @@ public class BoardMenuManager : MonoBehaviour {
 
             if (Input.GetButtonDown("Submit"))
             {
-                GameManager.Manager.board.currentUnit.UseSkill(cUnit.monster.skills[moveSelection]);
+                GameManager.Manager.board.currentUnit.UseSkill(items[moveSelection].ability);
                 break;
             }
 
             if (Input.GetAxisRaw("Vertical") != 0)
             {
                 moveSelection -= (int)Input.GetAxisRaw("Vertical");
-                moveSelection = moveSelection >= cUnit.monster.skills.Length ? 0 : moveSelection;
-                moveSelection = moveSelection < 0 ? (cUnit.monster.skills.Length - 1) : moveSelection;
+                moveSelection = moveSelection >= items.Count ? 0 : moveSelection;
+                moveSelection = moveSelection < 0 ? (items.Count - 1) : moveSelection;
 
-                skillDescription.text = skills[cUnit.monster.skills[moveSelection]].name + "\n" + skills[cUnit.monster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.monster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.monster.skills[moveSelection]].description;
+                skillDescription.text = items[moveSelection].itemName + "\n" + "Uses: " + items[moveSelection].remainingUses + "\n\n" + items[moveSelection].description;
 
                 yield return new WaitForSeconds(menuDelay);
             }
@@ -169,6 +176,6 @@ public class BoardMenuManager : MonoBehaviour {
         }
         combatMenu[1].gameObject.SetActive(false);
         yield return null;
-    }*/
+    }
 
 }

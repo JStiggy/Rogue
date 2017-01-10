@@ -27,6 +27,7 @@
         <!-- List of skills used by monster, uses inidices from SkillData.xml -->
  				<skills> 0 </skills>
         <skills> 1 </skills>
+        <skills> 5 </skills>
  			</skills>
  		
  			<passives>

@@ -69,17 +69,18 @@ abstract public class SkillComponent : MonoBehaviour {
     //Based upon the targeting type of the skill, check which units are in the attack radius and valid targets
     public Collider2D[] SplashTargets(Vector3 position, float radius, Unit caster)
     {
+        radius = radius * 1.41f;
         if (skill.targetType == 3)
         {
-            return Physics2D.OverlapBoxAll(position, new Vector2(radius + 1, radius + 1), 45f, 1 << 8 | 1 << 9);
+            return Physics2D.OverlapBoxAll(position, new Vector2(radius, radius), 45f, 1 << 8 | 1 << 9);
         }
         else if (skill.targetType == 2)
         {
-            return Physics2D.OverlapBoxAll(position, new Vector2(radius + 1, radius + 1), 45f, 1 << caster.gameObject.layer);
+            return Physics2D.OverlapBoxAll(position, new Vector2(radius, radius), 45f, 1 << caster.gameObject.layer);
         }
         else
         {
-            return Physics2D.OverlapBoxAll(position, new Vector2(radius + 1, radius + 1), 45f, ((1 << caster.gameObject.layer) ^ (1 << 8 | 1 << 9)));
+            return Physics2D.OverlapBoxAll(position, new Vector2(radius, radius), 45f, ((1 << caster.gameObject.layer) ^ (1 << 8 | 1 << 9)));
         }
     }
 

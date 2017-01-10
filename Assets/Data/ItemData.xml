@@ -1,20 +1,23 @@
  <ItemData>
  	<Items>
  		<Item>
+      <id>0</id>
       <itemName>Potion</itemName>
       <!-- Ability to cast on use, -1 will cause a failed action -->
       <ability> 3 </ability>
-      <!-- Ability to cast on use, -1 will cause a failed action -->
       <description>Throw a potion to heal a small amount of health to a target.</description>
       <cost>20</cost>
       <stackSize>1</stackSize>
+      <!-- Ability to cast on throw, MUST be Projectile abilities to work-->
+      <throwAbility> 7 </throwAbility>
+      
     </Item>
 
     <Item>
+      <id>1</id>
       <itemName>Healing Orb</itemName>
       <!-- Ability to cast on use, -1 will cause a failed action -->
       <ability> 6 </ability>
-      <!-- Ability to cast on use, -1 will cause a failed action -->
       <description>A small orb containing energy. Casts heal on usage.</description>
       <cost>50</cost>
       <stackSize>1</stackSize>

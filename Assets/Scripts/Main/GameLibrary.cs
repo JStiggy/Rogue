@@ -12,7 +12,7 @@ public class GameLibrary : MonoBehaviour
     public ItemData itemData;
 
     //Compile all data (stats, skills, etc)
-    void Start()
+    void Awake()
     {
         //Compile all monster info from the XML file
         XmlSerializer serializer = new XmlSerializer(typeof(MonsterData));

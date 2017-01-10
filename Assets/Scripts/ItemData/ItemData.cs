@@ -7,5 +7,5 @@ public class ItemData
 {
     [XmlArray("Items")]
     [XmlArrayItem("Item")]
-    public List<Item> Items = new List<Item>();
+    public List<Item> Items= new List<Item>();
 }

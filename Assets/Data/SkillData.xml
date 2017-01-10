@@ -38,7 +38,9 @@
       
       <!-- Tile distance from target location -->
 			<splashRange> 1 </splashRange>
-      <targetRange> 5 </targetRange>
+      
+      <!-- Targeting distance from user location -->
+      <targetRange> 3 </targetRange>
 		</Skill>
 
     <!-- 1: Magic Missle, Projectile Arcane Spell-->
@@ -81,6 +83,9 @@
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
+    
+      <!-- Targeting distance from user location -->
+      <targetRange> 0 </targetRange>
     </Skill>
     
     <!-- 2: Basic Attack, Melee Phys Skill-->
@@ -121,13 +126,17 @@
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
+      
+      <!-- Targeting distance from user location -->
+      <targetRange> 0 </targetRange>
+    
     </Skill>
 
     <!-- 3: Potion Item Effect, Melee Heal Skill-->
     <Skill>
       <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
            3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
-      <type> 5 </type>
+      <type> 3 </type>
       <name>Potion</name>
 
       <description>Apply first aid to the target healing minor battle wounds</description>
@@ -136,10 +145,10 @@
       <element> 0 </element>
 
       <!-- 1:Enemy 2:Ally 3:Any -->
-      <targetType> 2 </targetType>
+      <targetType> 3 </targetType>
 
       <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
-      <attackType> 3 </attackType>
+      <attackType> 0 </attackType>
       <defenseType> 0 </defenseType>
 
       <!-- Base Damage of the skill -->
@@ -148,7 +157,7 @@
       <!-- Multiplier based on attackType stat -->
       <modifierPower> 0 </modifierPower>
 
-      <cost> 3 </cost>
+      <cost> 0 </cost>
 
       <!-- No Statuses yet -->
       <status> 0 </status>
@@ -163,6 +172,8 @@
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
+      
+      <!-- Targeting distance from user location -->
       <targetRange> 1 </targetRange>
     </Skill>
 
@@ -206,8 +217,146 @@
       
       <!-- Tile distance from target location -->
       <splashRange> 0 </splashRange>
+      
+      <!-- Targeting distance from user location -->
+      <targetRange> 5 </targetRange>
+    </Skill>
+    
+    <!-- 5: First Aid, Targeted Heal Skill-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
+      <type> 3 </type>
+      <name>First Aid</name>
+      
+      <description>Self medicate wounds to heal a small amount of damage</description>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 0 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 3 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 3 </attackType>
+      <defenseType> 0 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 20 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> 0 </modifierPower>
+
+      <cost> 1 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 0 </accModifier>
+      <critModifier> 0 </critModifier>
+
+      <!-- Animation time -->
+       <animationTime> .15 </animationTime>
+      
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+      
+      <!-- Targeting distance from user location -->
+      <targetRange> 0 </targetRange>
+    </Skill>
+
+    <!-- 6: Heal, Heal Orb Usage Skill-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
+      <type> 3 </type>
+      <name>Heal</name>
+      
+      <description>Restore an allies being with magical energy</description>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 1 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 2 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 3 </attackType>
+      <defenseType> 0 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 75 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> 1.5 </modifierPower>
+
+      <cost> 0 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 0 </accModifier>
+      <critModifier> -0 </critModifier>
+
+      <!-- Animation time -->
+       <animationTime> .15 </animationTime>
+      
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+      
+      <!-- Targeting distance from user location -->
       <targetRange> 5 </targetRange>
     </Skill>
 
+    <!-- 7: Throw Healing Item, Projectile Item-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
+      <type> 1 </type>
+      <name>Throw Healing Item</name>
+
+      <description>Create a projectile of arcane energy</description>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 1 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 3 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 2 </attackType>
+      <defenseType> 3 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 20 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> .5 </modifierPower>
+
+      <cost> 2 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 255 </accModifier>
+      <critModifier> -255 </critModifier>
+
+      <!-- Animation time -->
+      <animationTime> .1 </animationTime>
+
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+
+      <!-- Targeting distance from user location -->
+      <targetRange> 0 </targetRange>
+    </Skill>
+
+    <!-- 8: Throw Non-effective Item, Projectile Item-->
   </Skills>
 </SkillData>

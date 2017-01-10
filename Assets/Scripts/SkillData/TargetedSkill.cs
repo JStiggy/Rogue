@@ -3,16 +3,16 @@ using System.Collections;
 
 public class TargetedSkill : SkillComponent {
 
-    Texture reticle;
     Unit target = null;
-    bool reticleDisplay = true;
+    SpriteRenderer sRenderer;
 
     //Create the skill adding all needed data, enable targeting
     public override void Create(Skill ability, Unit cast)
     {
         transform.position = cast.transform.position;
 
-        reticle = Resources.Load("Skills\\Reticle", typeof(Texture)) as Texture;
+        sRenderer = gameObject.AddComponent<SpriteRenderer>();
+        sRenderer.sprite = Resources.Load("Skills\\Reticle", typeof(Sprite)) as Sprite;
 
         this.skill = ability;
         this.caster = cast;
@@ -52,6 +52,7 @@ public class TargetedSkill : SkillComponent {
                     currentSelection = currentSelection >= targets.Length ? 0 : currentSelection;
                     currentSelection = currentSelection < 0 ? (targets.Length - 1) : currentSelection;
                     target = targets[currentSelection].gameObject.GetComponent<Unit>();
+                    this.transform.position = target.transform.position;
                 }
                 if(Input.GetButtonDown("Cancel"))
                 {
@@ -62,14 +63,12 @@ public class TargetedSkill : SkillComponent {
 
                 if (Input.GetButtonDown("Submit"))
                 {
-                    reticleDisplay = false;
-                    this.transform.position = target.transform.position;
+                    //reticleDisplay = false;
 
                     Collider2D[] hits = SplashTargets(transform.position, skill.splashRange, caster);
                     foreach (Collider2D t in hits) SkillEffect(t.GetComponent<Unit>());
 
-                    SpriteRenderer p = gameObject.AddComponent<SpriteRenderer>();
-                    p.sprite = Resources.Load("Skills\\" + skill.name, typeof(Sprite)) as Sprite;
+                    sRenderer.sprite = Resources.Load("Skills\\" + skill.name, typeof(Sprite)) as Sprite;
 
                     yield return new WaitForSeconds(skill.animationTime);
                     caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
@@ -82,14 +81,5 @@ public class TargetedSkill : SkillComponent {
             Destroy(gameObject);
             yield return null;
         }
-    }
-
-    //Print the targeting reticle if applicable
-    void OnGUI()
-    {
-        if (target == null || !reticleDisplay) return;
-        Vector2 v = Camera.main.WorldToScreenPoint(target.transform.position);
-        v = new Vector2(v.x - 16, Screen.height - v.y -16);
-        Graphics.DrawTexture(new Rect(v, new Vector2(32,32)) , reticle);
     }
 }

@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public GameLibrary gameLibrary;
     public BoardManager board;
     public SaveData playerData;
-
+    public List<Item> inventory;
     //Create a singleton to contain all Gamedata
     private static GameManager manager = null;
     public static GameManager Manager
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
             playerData.Save();
         else
             playerData.Load();
+        LoadInventory();
     }
 
     //Create a monster based on the index in the XML file
@@ -57,5 +59,40 @@ public class GameManager : MonoBehaviour
         Ally traits = ally.AddComponent<Ally>();
         traits.Create(gameLibrary.monsterData.Monsters[index]);
         return ally;
+    }
+
+    public void LoadInventory()
+    {
+        inventory = new List<Item>();
+        foreach (int i in playerData.inventory)
+        {
+            if(i == -1)
+            {
+                break;
+            }
+            else
+            {
+                Item item = gameLibrary.itemData.Items[i];
+                item.remainingUses = playerData.inventoryStackSize[i];
+                inventory.Add(item);
+            }
+        }
+    }
+
+    public void SaveInvetory()
+    {
+        for(int i = 0; i < 5; ++i)
+        {
+            if(i < inventory.Count)
+            {
+                playerData.inventory[i] = inventory[i].id;
+                playerData.inventoryStackSize[i] = inventory[i].remainingUses;
+            }
+            else
+            {
+                playerData.inventory[i] = -1;
+            }
+        }
+
     }
 }
