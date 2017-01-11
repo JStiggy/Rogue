@@ -9,12 +9,26 @@ public abstract class Unit : MonoBehaviour
     public int currentHealth;
     public int currentMana;
     public int direction = 2;
+    public int[] status = { 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     public abstract void Create(Monster monsterValue);
 
     public abstract IEnumerator StartTurn();
 
     public abstract void UseSkill(int index, int itemIndex = -1);
+
+    public void  ApplyEffects()
+    {
+        foreach(int i in monster.passives)
+        {
+            Passive p = GameManager.Manager.gameLibrary.passiveData.Passives[i];
+            if( p.type == 0 && p.requirement == 0)
+            {
+
+            }
+        }
+        StartCoroutine("StartTurn");
+    }
 
     public IEnumerator MoveTowards(Vector3 deltaPosition, GameObject other)
     {

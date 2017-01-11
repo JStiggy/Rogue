@@ -1,0 +1,30 @@
+<PassiveData>
+	<Passives> 
+		<!-- 0: Boost Strength unconditionally-->
+		<Passive>
+      <name>Strength Training</name>
+      <description>Boost strength by a small amount</description>
+      <type> 0 </type>
+      <requirement>-1</requirement>
+      <requirementParameter>-1</requirementParameter>
+      <valueBonus> -1 </valueBonus>
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+        <statBonus> 1.1 </statBonus>
+        <statBonus> 0 </statBonus>
+        <statBonus> 0 </statBonus>
+        <statBonus> 0 </statBonus>
+      </statBonus>
+
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus>
+
+      </resistanceBonus>
+
+      <statusBonus>
+
+      </statusBonus>
+    </Passive>
+    
+  </Passives>
+</PassiveData>

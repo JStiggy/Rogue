@@ -41,7 +41,7 @@ public class BoardManager : MonoBehaviour {
             //print("Start Turn: " + t.name);
             currentUnit = t;
             menu.UpdateHUD();
-            t.StartCoroutine("StartTurn");
+            t.ApplyEffects();
         }
         else
         {

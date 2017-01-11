@@ -31,7 +31,7 @@
  			</skills>
  		
  			<passives>
-       
+        <passives> 0 </passives>
  			</passives>
  		</Monster>
 

@@ -10,6 +10,8 @@ public class GameLibrary : MonoBehaviour
     public MonsterData monsterData;
     public SkillData skillData;
     public ItemData itemData;
+    public PassiveData passiveData;
+    public PassiveFilters passiveFilters;
 
     //Compile all data (stats, skills, etc)
     void Awake()
@@ -30,5 +32,13 @@ public class GameLibrary : MonoBehaviour
         stream = new FileStream(Application.dataPath + "\\Data\\ItemData.xml", FileMode.Open);
         itemData = serializer.Deserialize(stream) as ItemData;
         stream.Close();
+
+        serializer = new XmlSerializer(typeof(PassiveData));
+        stream = new FileStream(Application.dataPath + "\\Data\\PassiveData.xml", FileMode.Open);
+        passiveData = serializer.Deserialize(stream) as PassiveData;
+        stream.Close();
+
+        passiveFilters = new PassiveFilters();
+        passiveFilters.Create();
     }
 }

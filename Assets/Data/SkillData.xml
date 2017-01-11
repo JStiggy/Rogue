@@ -312,7 +312,7 @@
       <targetRange> 5 </targetRange>
     </Skill>
 
-    <!-- 7: Throw Item Damage. DON NOT GIVE THIS SKILL TO A UNIT, THIS SHOULD ONLY BE CALLED BY THE THROW MENU OPTION-->
+    <!-- 7: Throw Item Damage. DO NOT GIVE THIS SKILL TO A UNIT, THIS SHOULD ONLY BE CALLED BY THE THROW MENU OPTION-->
     <Skill>
       <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
            3: Healing Targeted   4: Healing Projectile   5: Healing Melee
