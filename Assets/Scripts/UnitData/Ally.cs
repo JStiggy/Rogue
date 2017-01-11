@@ -115,6 +115,11 @@ public class Ally : Unit
                 skillComponent = skill.AddComponent<MeleeSkill>();
                 skillComponent.Create(skillInfo, this, itemIndex);
                 break;
+            case 6:
+            case 7:
+                skillComponent = skill.AddComponent<ThrownSkill>();
+                skillComponent.Create(skillInfo, this, itemIndex);
+                break;
         }
     }
 

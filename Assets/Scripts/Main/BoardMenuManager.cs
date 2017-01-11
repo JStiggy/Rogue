@@ -11,7 +11,7 @@ public class BoardMenuManager : MonoBehaviour {
 
     public Image[] combatMenu;
     public Text[] combatMenuText;
-
+    public Text[] itemMenuText;
     public Text skillDescription;
     float menuDelay = .15f;
 
@@ -57,7 +57,7 @@ public class BoardMenuManager : MonoBehaviour {
                     case (0):
                         if(GameManager.Manager.inventory.Count != 0)
                         {
-                            this.StartCoroutine("ItemMenu");
+                            this.StartCoroutine(ItemMenu(0));
                             break;
                         }
                         else
@@ -66,8 +66,16 @@ public class BoardMenuManager : MonoBehaviour {
                             break;
                         }
                     case (1):
-                        this.StartCoroutine("SpellMenu");
-                        break;
+                        if (GameManager.Manager.board.currentUnit.monster.skills.Length != 0)
+                        {
+                            this.StartCoroutine("SpellMenu");
+                            break;
+                        }
+                        else
+                        {
+                            this.StartCoroutine("CombatMenu");
+                            break;
+                        }
                 }
 
                 break;
@@ -138,12 +146,10 @@ public class BoardMenuManager : MonoBehaviour {
         yield return null;
     }
 
-    public IEnumerator ItemMenu()
+    public IEnumerator ItemMenu(int moveSelection)
     {
         yield return null;
         combatMenu[1].gameObject.SetActive(true);
-
-        int moveSelection = 0;
 
         Unit cUnit = GameManager.Manager.board.currentUnit;
         List<Item> items = GameManager.Manager.inventory;
@@ -155,18 +161,20 @@ public class BoardMenuManager : MonoBehaviour {
             if (Input.GetButtonDown("Cancel"))
             {
                 GameManager.Manager.board.menu.StartCoroutine("CombatMenu");
+                combatMenu[1].gameObject.SetActive(false);
                 break;
             }
 
             if (Input.GetButtonUp("Menu"))
             {
                 GameManager.Manager.board.currentUnit.StartCoroutine("StartTurn");
+                combatMenu[1].gameObject.SetActive(false);
                 break;
             }
 
             if (Input.GetButtonDown("Submit"))
             {
-                GameManager.Manager.board.currentUnit.UseSkill(items[moveSelection].ability, moveSelection);
+                GameManager.Manager.board.currentUnit.StartCoroutine(ItemDecisionMenu(moveSelection));
                 break;
             }
 
@@ -182,8 +190,66 @@ public class BoardMenuManager : MonoBehaviour {
             }
             yield return null;
         }
-        combatMenu[1].gameObject.SetActive(false);
         yield return null;
     }
 
+    public IEnumerator ItemDecisionMenu(int itemIndex)
+    {
+        yield return null;
+        List<Item> items = GameManager.Manager.inventory;
+        combatMenu[2].gameObject.SetActive(true);
+        int moveSelection = 0;
+        itemMenuText[moveSelection].fontStyle = FontStyle.Italic;
+        while (true)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                itemMenuText[moveSelection].fontStyle = FontStyle.Normal;
+                GameManager.Manager.board.currentUnit.StartCoroutine(ItemMenu(itemIndex));
+                break;
+            }
+
+            if (Input.GetButtonUp("Menu"))
+            {
+                itemMenuText[moveSelection].fontStyle = FontStyle.Normal;
+                GameManager.Manager.board.currentUnit.StartCoroutine("StartTurn");
+                combatMenu[2].gameObject.SetActive(false);
+                break;
+            }
+
+            if (Input.GetButtonDown("Submit"))
+            {
+                itemMenuText[moveSelection].fontStyle = FontStyle.Normal;
+                switch (moveSelection)
+                {
+                    case (0):
+                        GameManager.Manager.board.currentUnit.UseSkill(items[itemIndex].ability, itemIndex);
+                        break;
+                    case (1):
+                        print(moveSelection + " " + itemIndex);
+                        GameManager.Manager.board.currentUnit.UseSkill(items[itemIndex].throwAbility, itemIndex);
+                        break;
+                    case (2):
+                        print("Not implemented");
+                        break;
+                }
+
+                break;
+            }
+
+            if (Input.GetAxisRaw("Vertical") != 0)
+            {
+                itemMenuText[moveSelection].fontStyle = FontStyle.Normal;
+                moveSelection -= (int)Input.GetAxisRaw("Vertical");
+                moveSelection = moveSelection >= itemMenuText.Length ? 0 : moveSelection;
+                moveSelection = moveSelection < 0 ? (itemMenuText.Length - 1) : moveSelection;
+                itemMenuText[moveSelection].fontStyle = FontStyle.Italic;
+                yield return new WaitForSeconds(menuDelay);
+            }
+            yield return null;
+        }
+        combatMenu[1].gameObject.SetActive(false);
+        combatMenu[2].gameObject.SetActive(false);
+        yield return null;
+    }
 }

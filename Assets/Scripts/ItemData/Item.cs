@@ -9,6 +9,10 @@ public class Item {
     public int cost;
     public int stackSize;
     public int remainingUses;
+    public int throwAbility;
+    public int throwFlatPower;
+    public float throwModPower;
+    public int throwSplashRange;
 
     public Item clone()
     {

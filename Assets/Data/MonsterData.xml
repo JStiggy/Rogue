@@ -37,7 +37,7 @@
 
     <Monster monsterName="Squire">
       <health> 12 </health>
-      <mana> 0 </mana>
+      <mana> 200 </mana>
 
       <stats>
         <!-- Strength, Vitality, Mind, Will -->
@@ -60,6 +60,9 @@
       <skills>
         <!-- List of skills used by monster, uses inidices from SkillData.xml -->
         <skills> 0 </skills>
+        <skills> 1 </skills>
+        <skills> 4 </skills>
+        <skills> 5 </skills>
       </skills>
 
       <passives>

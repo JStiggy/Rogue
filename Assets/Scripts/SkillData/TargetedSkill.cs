@@ -74,6 +74,7 @@ public class TargetedSkill : SkillComponent {
                     yield return new WaitForSeconds(skill.animationTime);
                     caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
                     GameManager.Manager.board.EndTurn();
+                    GameManager.Manager.DecrementInventory(item);
                     break;
                 }
 

@@ -6,7 +6,7 @@ public class ProjectileSkill : SkillComponent {
 
     bool active = true;
 
-    SpriteRenderer sRenderer;
+    public SpriteRenderer sRenderer;
 
     //Create the skill getting info about the caster and the skill used
     public override void Create(Skill ability, Unit cast, int itemIndex = -1)
@@ -50,6 +50,7 @@ public class ProjectileSkill : SkillComponent {
         yield return new WaitForSeconds(skill.animationTime);
         caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
         GameManager.Manager.board.EndTurn();
+        GameManager.Manager.DecrementInventory(item);
         Destroy(gameObject);
         yield return null;
     }

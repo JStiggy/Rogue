@@ -37,7 +37,7 @@ public class BoardManager : MonoBehaviour {
         if (unitQueue.Count != 0 || t.currentHealth > 0)
         {
             unitQueue.Enqueue(t);
-            print("Start Turn: " + t.name);
+            //print("Start Turn: " + t.name);
             currentUnit = t;
             menu.UpdateHUD();
             t.StartCoroutine("StartTurn");

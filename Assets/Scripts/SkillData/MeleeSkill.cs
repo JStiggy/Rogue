@@ -54,6 +54,7 @@ public class MeleeSkill : SkillComponent
         }
         caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
         GameManager.Manager.board.EndTurn();
+        GameManager.Manager.DecrementInventory(item);
         Destroy(gameObject);
         yield return null;
     }

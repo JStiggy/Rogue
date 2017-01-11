@@ -19,11 +19,13 @@ abstract public class SkillComponent : MonoBehaviour {
             case 0:
             case 1:
             case 2:
+            case 6:
                 ApplyDamage(target);
                 break;
             case 3:
             case 4:
             case 5:
+            case 7:
                 ApplyHealing(target);
                 break;
         }
@@ -84,10 +86,4 @@ abstract public class SkillComponent : MonoBehaviour {
             return Physics2D.OverlapBoxAll(position, new Vector2(radius, radius), 45f, ((1 << caster.gameObject.layer) ^ (1 << 8 | 1 << 9)));
         }
     }
-
-    public void OnDestroy()
-    {
-        GameManager.Manager.DecrementInventory(item);
-    }
-
 }

@@ -312,32 +312,33 @@
       <targetRange> 5 </targetRange>
     </Skill>
 
-    <!-- 7: Throw Healing Item, Projectile Item-->
+    <!-- 7: Throw Item Damage. DON NOT GIVE THIS SKILL TO A UNIT, THIS SHOULD ONLY BE CALLED BY THE THROW MENU OPTION-->
     <Skill>
       <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
-           3: Healing Targeted   4: Healing Projectile   5: Healing Melee  -->
-      <type> 1 </type>
-      <name>Throw Healing Item</name>
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee
+           6: Offensive Thrown   7: Healing Thrown-->
+      <type> 6 </type>
+      <name>Throw D</name>
 
-      <description>Create a projectile of arcane energy</description>
+      <description>Throw it</description>
 
       <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
-      <element> 1 </element>
+      <element> 0 </element>
 
       <!-- 1:Enemy 2:Ally 3:Any -->
       <targetType> 3 </targetType>
 
       <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
-      <attackType> 2 </attackType>
-      <defenseType> 3 </defenseType>
+      <attackType> 0 </attackType>
+      <defenseType> 1 </defenseType>
 
       <!-- Base Damage of the skill -->
-      <flatPower> 20 </flatPower>
+      <flatPower> 0 </flatPower>
 
       <!-- Multiplier based on attackType stat -->
-      <modifierPower> .5 </modifierPower>
+      <modifierPower> 0 </modifierPower>
 
-      <cost> 2 </cost>
+      <cost> 0 </cost>
 
       <!-- No Statuses yet -->
       <status> 0 </status>
@@ -345,7 +346,7 @@
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 255 </accModifier>
-      <critModifier> -255 </critModifier>
+      <critModifier> 0 </critModifier>
 
       <!-- Animation time -->
       <animationTime> .1 </animationTime>
@@ -357,6 +358,51 @@
       <targetRange> 0 </targetRange>
     </Skill>
 
-    <!-- 8: Throw Non-effective Item, Projectile Item-->
+    <!-- 8: Throw Item Healing. DON NOT GIVE THIS SKILL TO A UNIT, THIS SHOULD ONLY BE CALLED BY THE THROW MENU OPTION-->
+    <Skill>
+      <!-- 0: Offensive Targeted 1: Offensive Projectile 2: Offensive Melee
+           3: Healing Targeted   4: Healing Projectile   5: Healing Melee
+           6: Offensive Thrown   7: Healing Thrown-->
+      <type> 7 </type>
+      <name>Throw S</name>
+
+      <description>Throw it</description>
+
+      <!-- 0:Phys 1:Arcane 2:Fire 3:Ice 4:Elec-->
+      <element> 0 </element>
+
+      <!-- 1:Enemy 2:Ally 3:Any -->
+      <targetType> 3 </targetType>
+
+      <!-- 0: Strength 1: Vitality 2: Mind 3: Will-->
+      <attackType> 0 </attackType>
+      <defenseType> 1 </defenseType>
+
+      <!-- Base Damage of the skill -->
+      <flatPower> 0 </flatPower>
+
+      <!-- Multiplier based on attackType stat -->
+      <modifierPower> 0 </modifierPower>
+
+      <cost> 0 </cost>
+
+      <!-- No Statuses yet -->
+      <status> 0 </status>
+      <statusRate> 0 </statusRate>
+
+      <!-- 255 always hit/crit, -255 never hit/crit-->
+      <accModifier> 255 </accModifier>
+      <critModifier> 0 </critModifier>
+
+      <!-- Animation time -->
+      <animationTime> .1 </animationTime>
+
+      <!-- Tile distance from target location -->
+      <splashRange> 0 </splashRange>
+
+      <!-- Targeting distance from user location -->
+      <targetRange> 0 </targetRange>
+    </Skill>
+    
   </Skills>
 </SkillData>

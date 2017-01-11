@@ -10,10 +10,10 @@ using System.Reflection;
 [Serializable ()]
 public class SaveData : ISerializable
 {
-    public int[] unitID = { 0, -1, -1, -1 };
+    public int[] unitID = { 1, -1, -1, -1 };
     public int[] cHp = { 12, 10, 0, 0 };
-    public int[] cMp = { 0, 5, 0, 0 };
-    public int[] inventory = { 0, 0, 1, -1, -1 };
+    public int[] cMp = { 20, 5, 0, 0 };
+    public int[] inventory = { 0, 1, 0, -1, -1 };
     public int[] inventoryStackSize = { 1, 3, 5, -1, -1 };
 
     public SaveData() {
