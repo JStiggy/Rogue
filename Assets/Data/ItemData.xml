@@ -23,7 +23,7 @@
       <ability> 6 </ability>
       <description>A small orb containing energy. Casts heal on usage.</description>
       <cost>50</cost>
-      <stackSize>1</stackSize>
+      <stackSize>3</stackSize>
       <!-- Ability to cast on throw, MUST BE A THROW ability to work-->
       <throwAbility> 7 </throwAbility>
       <throwFlatPower> 100 </throwFlatPower>

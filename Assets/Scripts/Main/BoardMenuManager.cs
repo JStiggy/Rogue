@@ -193,6 +193,11 @@ public class BoardMenuManager : MonoBehaviour {
 
     public IEnumerator ItemDecisionMenu(int itemIndex)
     {
+        Collider2D groundObj = Physics2D.OverlapCircle(GameManager.Manager.board.currentUnit.transform.position, .5f, 1 << 11);
+        if (groundObj != null)
+            itemMenuText[2].text = "Swap";
+        else
+            itemMenuText[2].text = "Drop";
         yield return null;
         List<Item> items = GameManager.Manager.inventory;
         combatMenu[2].gameObject.SetActive(true);
@@ -224,11 +229,26 @@ public class BoardMenuManager : MonoBehaviour {
                         GameManager.Manager.board.currentUnit.UseSkill(items[itemIndex].ability, itemIndex);
                         break;
                     case (1):
-                        print(moveSelection + " " + itemIndex);
                         GameManager.Manager.board.currentUnit.UseSkill(items[itemIndex].throwAbility, itemIndex);
                         break;
                     case (2):
-                        print("Not implemented");
+                        if(groundObj != null)
+                        {
+                            //asda
+                            Item swap = groundObj.GetComponent<ItemComponent>().Swap(GameManager.Manager.inventory[itemIndex]);
+                            GameManager.Manager.inventory[itemIndex] = swap;
+                            GameManager.Manager.board.EndTurn();
+                        }
+                        else
+                        {
+                            GameObject item = new GameObject();
+                            item.transform.position = GameManager.Manager.board.currentUnit.transform.position;
+                            item.transform.Translate(new Vector3(0, 0, 1));
+                            ItemComponent traits = item.AddComponent<ItemComponent>();
+                            traits.Create(GameManager.Manager.inventory[itemIndex]);
+                            GameManager.Manager.inventory.RemoveAt(itemIndex);
+                            GameManager.Manager.board.EndTurn();
+                        }
                         break;
                 }
 

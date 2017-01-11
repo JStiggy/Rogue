@@ -61,6 +61,18 @@ public class GameManager : MonoBehaviour
         return ally;
     }
 
+    public GameObject CreateItem(int index)
+    {
+        if (index >= gameLibrary.itemData.Items.Count)
+        {
+            Debug.LogError("Index out of range, cannot create item of index " + index);
+        }
+        GameObject item = new GameObject();
+        ItemComponent traits = item.AddComponent<ItemComponent>();
+        traits.Create(index);
+        return item;
+    }
+
     public void LoadInventory()
     {
         inventory = new List<Item>();

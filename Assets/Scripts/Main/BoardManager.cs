@@ -22,6 +22,7 @@ public class BoardManager : MonoBehaviour {
             allies.Add(p.GetComponent<Unit>());
         }
         GameManager.Manager.CreateMonster(0).transform.position = new Vector3(1, 1, 0);
+        GameManager.Manager.CreateItem(1).transform.position = new Vector3(-1, -1, 0);
         EndTurn();
 
     }

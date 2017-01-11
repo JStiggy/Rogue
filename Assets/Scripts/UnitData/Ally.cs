@@ -42,6 +42,16 @@ public class Ally : Unit
                 direction = inputVec.y > 0 ? 8 - direction : direction;
             }
 
+            if(Input.GetButtonDown("Pickup"))
+            {
+                Collider2D col = Physics2D.OverlapCircle(transform.position, .5f, 1 << 11);
+                if (col != null && GameManager.Manager.inventory.Count < 20)
+                {
+                    GameManager.Manager.inventory.Add(col.gameObject.GetComponent<ItemComponent>().item);
+                    Destroy(col.gameObject);
+                }
+            }
+
             if(Input.GetButtonDown("Menu"))
             {
                 GameManager.Manager.board.menu.StartCoroutine("CombatMenu");
