@@ -13,6 +13,7 @@
       <throwFlatPower> 100 </throwFlatPower>
       <throwModPower> 0 </throwModPower>
       <throwSplashRange> 0 </throwSplashRange>
+      <throwWhole> 0 </throwWhole>
     </Item>
 
     <Item>
@@ -28,6 +29,7 @@
       <throwFlatPower> 100 </throwFlatPower>
       <throwModPower> 1 </throwModPower>
       <throwSplashRange> 0 </throwSplashRange>
+      <throwWhole> 1 </throwWhole>
     </Item>
     
  	</Items>

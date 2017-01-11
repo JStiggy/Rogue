@@ -14,6 +14,11 @@ public class ThrownSkill : ProjectileSkill {
         this.skill.modifierPower = item.throwModPower;
         this.skill.splashRange = item.throwSplashRange;
 
+        if(item.throwWhole == 1)
+        {
+            item.remainingUses = 0;
+        }
+
         transform.position = cast.transform.position;
         transform.rotation = Quaternion.Euler(0, 0, cast.direction * -45f);
 

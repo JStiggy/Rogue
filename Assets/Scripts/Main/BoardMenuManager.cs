@@ -150,8 +150,6 @@ public class BoardMenuManager : MonoBehaviour {
     {
         yield return null;
         combatMenu[1].gameObject.SetActive(true);
-
-        Unit cUnit = GameManager.Manager.board.currentUnit;
         List<Item> items = GameManager.Manager.inventory;
 
         skillDescription.text = items[moveSelection].itemName + "\n" + "Uses: " + items[moveSelection].remainingUses + "\n\n" + items[moveSelection].description;

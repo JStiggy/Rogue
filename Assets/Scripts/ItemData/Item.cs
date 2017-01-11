@@ -13,6 +13,7 @@ public class Item {
     public int throwFlatPower;
     public float throwModPower;
     public int throwSplashRange;
+    public int throwWhole;
 
     public Item clone()
     {
