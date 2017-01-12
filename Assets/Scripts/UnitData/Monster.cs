@@ -18,7 +18,7 @@ public class Monster {
     public float[] resistances;
 
     [XmlArrayItem("statusResistances")]
-    public float[] statusResistances;
+    public int[] statusResistances;
 
     [XmlArrayItem("skills")]
     public int[] skills;
@@ -31,7 +31,7 @@ public class Monster {
         Monster tmp = (Monster)(this.MemberwiseClone());
         tmp.stats = (int[])stats.Clone();
         tmp.resistances = (float[])resistances.Clone();
-        tmp.statusResistances = (float[])statusResistances.Clone();
+        tmp.statusResistances = (int[])statusResistances.Clone();
         return tmp;
     }
 }

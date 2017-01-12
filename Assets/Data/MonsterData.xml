@@ -91,7 +91,8 @@
 
       <passives>
         <passives> 0 </passives>
-        <passives> 3 </passives>
+        <passives> 4 </passives>
+        <passives> 5 </passives>
       </passives>
     </Monster>
     

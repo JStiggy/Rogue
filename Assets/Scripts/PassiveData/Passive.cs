@@ -19,5 +19,5 @@ public class Passive
     public float[] resistanceBonus = { };
     //Changes to characters status resistances
     [XmlArrayItem("statusBonus")]
-    public float[] statusBonus = { };
+    public int[] statusBonus = { };
 }

@@ -12,8 +12,26 @@ abstract public class SkillComponent : MonoBehaviour {
 
     public abstract IEnumerator SkillSelection();
 
+    public void ApplyPassives()
+    {
+        skill = skill.Clone();
+        foreach (int i in caster.stats.passives)
+        {
+            Passive p = GameManager.Manager.gameLibrary.passiveData.Passives[i];
+            if (p.type == 1 && (p.requirement == -1 || GameManager.Manager.gameLibrary.passiveFilters.skillFilters[p.requirement](skill, p.requirementParameter)))
+            {
+                print(p.name + " activated");
+                for (int j = 0; j < skill.status.Length; ++j)
+                {
+                    skill.status[j] += p.statusBonus[j];
+                }
+            }
+        }
+    }
+
     public void SkillEffect(Unit target)
     {
+        ApplyPassives();
         switch (skill.type)
         {
             case 0:

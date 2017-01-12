@@ -25,9 +25,18 @@
 			
       <cost> 4 </cost>
 
-      <!-- No Statuses yet -->
-			<status> 0 </status>
-			<statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+			<status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
 			<accModifier> 255 </accModifier>
@@ -70,9 +79,18 @@
 
       <cost> 2 </cost>
 
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 255 </accModifier>
@@ -113,9 +131,18 @@
 
       <cost> 0 </cost>
 
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 0 </accModifier>
@@ -160,9 +187,18 @@
       <cost> 0 </cost>
 
       <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
-
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 0 </accModifier>
       <critModifier> -0 </critModifier>
@@ -204,9 +240,18 @@
 
       <cost> 3 </cost>
 
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 0 </accModifier>
@@ -249,9 +294,18 @@
 
       <cost> 1 </cost>
 
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 0 </accModifier>
@@ -294,9 +348,18 @@
 
       <cost> 0 </cost>
 
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 0 </accModifier>
@@ -340,9 +403,18 @@
 
       <cost> 0 </cost>
 
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 255 </accModifier>
@@ -386,9 +458,18 @@
 
       <cost> 0 </cost>
 
-      <!-- No Statuses yet -->
-      <status> 0 </status>
-      <statusRate> 0 </statusRate>
+      <!-- 0:Str 1:Vit 2:Int 3:Mind 4:Poison 5:Blind 6:Silence 7:Sleep 8:Paralyze -->
+      <status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+        <status> 0 </status>
+      </status>
 
       <!-- 255 always hit/crit, -255 never hit/crit-->
       <accModifier> 255 </accModifier>

@@ -13,11 +13,17 @@ public class Skill {
     public int flatPower;
     public float modifierPower;
     public int cost;
-    public int status;
-    public int statusRate;
+    [XmlArrayItem("status")]
+    public int[] status;
     public int accModifier;
     public int critModifier;
     public float animationTime;
     public int splashRange;
     public int targetRange = 0;
+    public Skill Clone()
+    {
+        Skill temp = (Skill)this.MemberwiseClone();
+        temp.status = (int[])status.Clone();
+        return temp;
+    }
 }

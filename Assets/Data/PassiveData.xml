@@ -108,5 +108,66 @@
         <statusBonus> 0 </statusBonus>
       </statusBonus>
     </Passive>
+
+    <!-- 4 Blade Breaker: Moderate chance to decrease an enemies strength stat-->
+    <Passive>
+      <name>Blade Breaker</name>
+      <description>Protection from strength down effects</description>
+      <type> 1 </type>
+      <requirement>2</requirement>
+      <requirementParameter>2</requirementParameter>
+      <valueBonus> 0 </valueBonus>
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+      </statBonus>
+
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus>
+      </resistanceBonus>
+
+      <!-- Status infliction rate -->
+      <statusBonus>
+        <statusBonus> 64 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+      </statusBonus>
+    </Passive>
+
+    <!-- 4 Virulent: Moderate chance to inflict poison on physical attacks-->
+    <Passive>
+      <name>Virulent</name>
+      <description>Moderate chance to inflict poison on physical attacks</description>
+      <type> 1 </type>
+      <requirement>5</requirement>
+      <requirementParameter>0</requirementParameter>
+      <valueBonus> 0 </valueBonus>
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+      </statBonus>
+
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus>
+      </resistanceBonus>
+
+      <!-- Status infliction rate -->
+      <statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 128 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+      </statusBonus>
+    </Passive>
+
   </Passives>
 </PassiveData>

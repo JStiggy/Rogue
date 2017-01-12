@@ -17,6 +17,9 @@ public class PassiveFilters {
         statFilters.Add(AboveHealth); statFilters.Add(BelowHealth); statFilters.Add(EqualHealth);
         statFilters.Add(HasStatus); statFilters.Add(DoesNotHaveStatus); statFilters.Add(HasNoStatus);
 
+        skillFilters = new List<SkillFilters>();
+        skillFilters.Add(IsElement); skillFilters.Add(NotElement); skillFilters.Add(IsType);
+        skillFilters.Add(IsDamagingType); skillFilters.Add(IsHealingType); skillFilters.Add(IsPhysical);
     }
 
     //Can be called directly
@@ -51,7 +54,7 @@ public class PassiveFilters {
         return unit.status[status] != 1;
     }
 
-    public bool HasNoStatus(Unit unit, int val)
+    public bool HasNoStatus(Unit unit, int value)
     {
         bool tmp = true;
         for(int i = 4; i < unit.status.Length; ++i)
@@ -85,6 +88,11 @@ public class PassiveFilters {
     public bool IsHealingType(Skill skill, int value)
     {
         return (skill.type == 4) || (skill.type == 5) || (skill.type == 3) || (skill.type == 7);
+    }
+
+    public bool IsPhysical(Skill skill, int value)
+    {
+        return IsElement(skill, 0) && IsDamagingType(skill, 0);
     }
 
 }

@@ -42,7 +42,6 @@ public abstract class Unit : MonoBehaviour
                 }
             }
         }
-        print("Resist: " + stats.statusResistances[0]);
         StartCoroutine("StartTurn");
     }
 
