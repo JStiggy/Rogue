@@ -38,17 +38,17 @@ abstract public class SkillComponent : MonoBehaviour {
         if (skill.modifierPower > 0 || skill.flatPower > 0)
         {
             int crit = (Random.Range(0, 255) + skill.critModifier) > (255 * .95f) ? 2 : 1;
-            int damage = (int)((skill.modifierPower * caster.monster.stats[skill.attackType] + skill.flatPower) / target.monster.stats[skill.defenseType] * target.monster.resistances[skill.element]) * crit;
+            int damage = (int)((skill.modifierPower * caster.stats.stats[skill.attackType] + skill.flatPower) / target.stats.stats[skill.defenseType] * target.stats.resistances[skill.element]) * crit;
             if (crit == 2 && damage > 0)
-                print(target.monster.monsterName + " takes " + damage + "!");
+                print(target.baseMonster.monsterName + " takes " + damage + "!");
             else if (damage == 0)
                 print("There was no effect!");
             else if (damage < 0)
-                print(target.monster.monsterName + " is healed for " + -1 * damage);
+                print(target.baseMonster.monsterName + " is healed for " + -1 * damage);
             else
-                print(target.monster.monsterName + " takes " + damage);
+                print(target.baseMonster.monsterName + " takes " + damage);
 
-            target.currentHealth = Mathf.Clamp(target.currentHealth - damage, 0, target.monster.health);
+            target.currentHealth = Mathf.Clamp(target.currentHealth - damage, 0, target.baseMonster.health);
         }
     }
 
@@ -56,9 +56,9 @@ abstract public class SkillComponent : MonoBehaviour {
     {
         if (skill.modifierPower > 0 || skill.flatPower > 0)
         {
-            int healing = (int)(skill.modifierPower * caster.monster.stats[skill.attackType] + skill.flatPower);
-            print(target.monster.monsterName + " is healed for " + healing + "!");
-            target.currentHealth = Mathf.Clamp(target.currentHealth + healing, 0, target.monster.health);
+            int healing = (int)(skill.modifierPower * caster.stats.stats[skill.attackType] + skill.flatPower);
+            print(target.stats.monsterName + " is healed for " + healing + "!");
+            target.currentHealth = Mathf.Clamp(target.currentHealth + healing, 0, target.baseMonster.health);
         }
 
     }

@@ -5,13 +5,14 @@ using System.Collections;
 public abstract class Unit : MonoBehaviour
 {
 
-    public Monster monster;
+    public Monster stats;
+    public Monster baseMonster;
     public int currentHealth;
     public int currentMana;
     public int direction = 2;
     public int[] status = { 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-    public abstract void Create(Monster monsterValue);
+    public abstract void Create(int monsterValue);
 
     public abstract IEnumerator StartTurn();
 
@@ -19,14 +20,29 @@ public abstract class Unit : MonoBehaviour
 
     public void  ApplyEffects()
     {
-        foreach(int i in monster.passives)
+        stats = baseMonster.Clone();
+
+        foreach(int i in baseMonster.passives)
         {
             Passive p = GameManager.Manager.gameLibrary.passiveData.Passives[i];
-            if( p.type == 0 && p.requirement == 0)
+            if( p.type == 0 && (p.requirement == -1 || GameManager.Manager.gameLibrary.passiveFilters.statFilters[p.requirement](this, p.requirementParameter)))
             {
-
+                
+                for(int j = 0; j < p.statBonus.Length;++j)
+                {
+                    stats.stats[j] += (int)(baseMonster.stats[j] * p.statBonus[j]);
+                }
+                for (int j = 0; j < p.resistanceBonus.Length; ++j)
+                {
+                    stats.resistances[j] += p.resistanceBonus[j];
+                }
+                for (int j = 0; j < p.statusBonus.Length; ++j)
+                {
+                    stats.statusResistances[j] += p.statusBonus[j];
+                }
             }
         }
+        print("Resist: " + stats.statusResistances[0]);
         StartCoroutine("StartTurn");
     }
 

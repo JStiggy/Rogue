@@ -52,7 +52,7 @@ public class MeleeSkill : SkillComponent
             foreach (Collider2D t in targets) SkillEffect(t.GetComponent<Unit>());
             yield return new WaitForSeconds(skill.animationTime);
         }
-        caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
+        caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.baseMonster.mana);
         GameManager.Manager.board.EndTurn();
         GameManager.Manager.DecrementInventory(item);
         Destroy(gameObject);

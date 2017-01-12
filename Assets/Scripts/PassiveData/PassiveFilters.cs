@@ -28,17 +28,17 @@ public class PassiveFilters {
     //Delegates for StatFilter
     public bool AboveHealth(Unit unit, int percent)
     {
-        return (unit.currentHealth / unit.monster.health) * 100 >= percent;
+        return (unit.currentHealth / unit.baseMonster.health) * 100 >= percent;
     }
 
     public bool BelowHealth(Unit unit, int percent)
     {
-        return (unit.currentHealth / unit.monster.health) * 100 <= percent;
+        return (unit.currentHealth / unit.baseMonster.health) * 100 <= percent;
     }
 
     public bool EqualHealth(Unit unit, int percent)
     {
-        return (unit.currentHealth / unit.monster.health) * 100 == percent;
+        return (unit.currentHealth / unit.baseMonster.health) * 100 == percent;
     }
 
     public bool HasStatus(Unit unit, int status)

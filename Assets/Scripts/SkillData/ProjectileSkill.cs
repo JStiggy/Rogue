@@ -48,7 +48,7 @@ public class ProjectileSkill : SkillComponent {
             yield return null;
         }
         yield return new WaitForSeconds(skill.animationTime);
-        caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.monster.mana);
+        caster.currentMana = Mathf.Clamp(caster.currentMana - skill.cost, 0, caster.baseMonster.mana);
         GameManager.Manager.board.EndTurn();
         GameManager.Manager.DecrementInventory(item);
         Destroy(gameObject);

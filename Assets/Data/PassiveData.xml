@@ -1,6 +1,6 @@
 <PassiveData>
 	<Passives> 
-		<!-- 0: Boost Strength unconditionally-->
+		<!-- 0 Strength Training: Boost Strength unconditionally-->
 		<Passive>
       <name>Strength Training</name>
       <description>Boost strength by a small amount</description>
@@ -10,7 +10,7 @@
       <valueBonus> -1 </valueBonus>
       <!-- Stat altered by passive, these are multiplicative -->
       <statBonus>
-        <statBonus> 1.1 </statBonus>
+        <statBonus> .1 </statBonus>
         <statBonus> 0 </statBonus>
         <statBonus> 0 </statBonus>
         <statBonus> 0 </statBonus>
@@ -25,6 +25,88 @@
 
       </statusBonus>
     </Passive>
-    
+
+    <!-- 1 Peerless: Boost strength greatly when undamaged-->
+    <Passive>
+      <name>Peerless</name>
+      <description>Boost strength greatly when undamaged</description>
+      <type> 0 </type>
+      <requirement>0</requirement>
+      <requirementParameter>100</requirementParameter>
+      <valueBonus> 0 </valueBonus>
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+        <statBonus> .85 </statBonus>
+        <statBonus> 0 </statBonus>
+        <statBonus> 0 </statBonus>
+        <statBonus> 0 </statBonus>
+      </statBonus>
+
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus>
+
+      </resistanceBonus>
+
+      <statusBonus>
+
+      </statusBonus>
+    </Passive>
+
+    <!-- 2 Artic Protection: Minor protection from ice damage-->
+    <Passive>
+      <name>Artic Protection</name>
+      <description>Minor protection from ice damage</description>
+      <type> 0 </type>
+      <requirement>-1</requirement>
+      <requirementParameter>-1</requirementParameter>
+      <valueBonus> -1 </valueBonus>
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+        
+      </statBonus>
+
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus>
+        <resistanceBonus> 0 </resistanceBonus>
+        <resistanceBonus> 0 </resistanceBonus>
+        <resistanceBonus> 0 </resistanceBonus>
+        <resistanceBonus> .25 </resistanceBonus>
+        <resistanceBonus> 0 </resistanceBonus>
+      </resistanceBonus>
+
+      <statusBonus>
+
+      </statusBonus>
+    </Passive>
+
+    <!-- 3 Maintained Blade: Protection from strength down effects-->
+    <Passive>
+      <name>Maintained Blade</name>
+      <description>Protection from strength down effects</description>
+      <type> 0 </type>
+      <requirement>-1</requirement>
+      <requirementParameter>-1</requirementParameter>
+      <valueBonus> -1 </valueBonus>
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+
+      </statBonus>
+
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus>
+      </resistanceBonus>
+
+      <statusBonus>
+        <statusBonus> 128 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+        <statusBonus> 0 </statusBonus>
+      </statusBonus>
+    </Passive>
   </Passives>
 </PassiveData>

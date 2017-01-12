@@ -28,8 +28,8 @@ public class BoardMenuManager : MonoBehaviour {
             {
                 unitHUD[i].enabled = unitImage[i].enabled = unitText[i].enabled = true;
                 unitImage[i].sprite = allies[i].GetComponent<SpriteRenderer>().sprite;
-                unitText[i].text = allies[i].currentHealth.ToString().PadRight(3) + "/" + allies[i].monster.health.ToString().PadRight(3) + "\n" +
-                                   allies[i].currentMana.ToString().PadRight(3) + "/" + allies[i].monster.mana.ToString().PadRight(3) + "\nHealthy";
+                unitText[i].text = allies[i].currentHealth.ToString().PadRight(3) + "/" + allies[i].baseMonster.health.ToString().PadRight(3) + "\n" +
+                                   allies[i].currentMana.ToString().PadRight(3) + "/" + allies[i].baseMonster.mana.ToString().PadRight(3) + "\nHealthy";
             }
         }
     }
@@ -66,7 +66,7 @@ public class BoardMenuManager : MonoBehaviour {
                             break;
                         }
                     case (1):
-                        if (GameManager.Manager.board.currentUnit.monster.skills.Length != 0)
+                        if (GameManager.Manager.board.currentUnit.baseMonster.skills.Length != 0)
                         {
                             this.StartCoroutine("SpellMenu");
                             break;
@@ -108,7 +108,7 @@ public class BoardMenuManager : MonoBehaviour {
 
         string[] element = { "Phys", "Arcane", "Fire", "Ice", "Elec" };
 
-        skillDescription.text = skills[cUnit.monster.skills[moveSelection]].name + "\n" + skills[cUnit.monster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.monster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.monster.skills[moveSelection]].description;
+        skillDescription.text = skills[cUnit.baseMonster.skills[moveSelection]].name + "\n" + skills[cUnit.baseMonster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.baseMonster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.baseMonster.skills[moveSelection]].description;
         while (true)
         {
 
@@ -126,17 +126,17 @@ public class BoardMenuManager : MonoBehaviour {
 
             if(Input.GetButtonDown("Submit"))
             {
-                GameManager.Manager.board.currentUnit.UseSkill(cUnit.monster.skills[moveSelection]);
+                GameManager.Manager.board.currentUnit.UseSkill(cUnit.baseMonster.skills[moveSelection]);
                 break;
             }
 
             if (Input.GetAxisRaw("Vertical") != 0)
             {
                 moveSelection -= (int)Input.GetAxisRaw("Vertical");
-                moveSelection = moveSelection >= cUnit.monster.skills.Length ? 0 : moveSelection;
-                moveSelection = moveSelection < 0 ? (cUnit.monster.skills.Length - 1) : moveSelection;
+                moveSelection = moveSelection >= cUnit.baseMonster.skills.Length ? 0 : moveSelection;
+                moveSelection = moveSelection < 0 ? (cUnit.baseMonster.skills.Length - 1) : moveSelection;
 
-                skillDescription.text = skills[cUnit.monster.skills[moveSelection]].name + "\n" + skills[cUnit.monster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.monster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.monster.skills[moveSelection]].description;
+                skillDescription.text = skills[cUnit.baseMonster.skills[moveSelection]].name + "\n" + skills[cUnit.baseMonster.skills[moveSelection]].cost + " Mana\nElement: " + element[skills[cUnit.baseMonster.skills[moveSelection]].element] + "\n\n" + skills[cUnit.baseMonster.skills[moveSelection]].description;
 
                 yield return new WaitForSeconds(menuDelay);
             }

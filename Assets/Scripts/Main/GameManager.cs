@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         }
         GameObject monster = new GameObject();
         Enemy traits = monster.AddComponent<Enemy>();
-        traits.Create(gameLibrary.monsterData.Monsters[index]);
+        traits.Create(index);
         return monster;
     }
 
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (index < 0) return null;
         GameObject ally = new GameObject();
         Ally traits = ally.AddComponent<Ally>();
-        traits.Create(gameLibrary.monsterData.Monsters[index]);
+        traits.Create(index);
         return ally;
     }
 

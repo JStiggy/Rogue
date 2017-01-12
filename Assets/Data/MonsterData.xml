@@ -29,7 +29,19 @@
         <skills> 1 </skills>
         <skills> 5 </skills>
  			</skills>
- 		
+
+      <statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+      </statusResistances>
+      
  			<passives>
         <passives> 0 </passives>
  			</passives>
@@ -41,7 +53,7 @@
 
       <stats>
         <!-- Strength, Vitality, Mind, Will -->
-        <stats> 5 </stats>
+        <stats> 100 </stats>
         <stats> 7 </stats>
         <stats> 2 </stats>
         <stats> 2 </stats>
@@ -57,6 +69,18 @@
 
       </resistances>
 
+      <statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+        <statusResistances>0</statusResistances>
+      </statusResistances>
+      
       <skills>
         <!-- List of skills used by monster, uses inidices from SkillData.xml -->
         <skills> 0 </skills>
@@ -66,7 +90,8 @@
       </skills>
 
       <passives>
-
+        <passives> 0 </passives>
+        <passives> 3 </passives>
       </passives>
     </Monster>
     

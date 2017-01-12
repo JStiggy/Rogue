@@ -5,18 +5,22 @@ public class Ally : Unit
 {
 
     //Create an enemy of specified base stats and any needed values
-    public override void Create(Monster monsterValue)
+    public override void Create(int monsterValue)
     {
-        monster = monsterValue;
-        gameObject.name = monsterValue.monsterName;
-        currentHealth = monsterValue.health;
-        currentMana = monsterValue.mana;
+        stats = GameManager.Manager.gameLibrary.monsterData.Monsters[monsterValue].Clone();
+        baseMonster = GameManager.Manager.gameLibrary.monsterData.Monsters[monsterValue];
+
+        stats.stats[0] += 1;
+
+        gameObject.name = stats.monsterName;
+        currentHealth = stats.health;
+        currentMana = stats.mana;
 
         gameObject.tag = "Ally";
         gameObject.layer = 9;
 
         SpriteRenderer p = gameObject.AddComponent<SpriteRenderer>();
-        p.sprite = Resources.Load("Units\\" + monsterValue.monsterName, typeof(Sprite)) as Sprite;
+        p.sprite = Resources.Load("Units\\" + stats.monsterName, typeof(Sprite)) as Sprite;
 
         BoxCollider2D c = gameObject.AddComponent<BoxCollider2D>();
         c.isTrigger = true;
