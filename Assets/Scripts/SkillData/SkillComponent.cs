@@ -29,6 +29,21 @@ abstract public class SkillComponent : MonoBehaviour {
         }
     }
 
+    public int ApplyDamagePassives(int damage, Unit target)
+    {
+        int baseDamage = damage;
+        foreach (int i in caster.stats.passives)
+        {
+            Passive p = GameManager.Manager.gameLibrary.passiveData.Passives[i];
+            if (p.type == 2 && (p.requirement == -1 || GameManager.Manager.gameLibrary.passiveFilters.damageFilters[p.requirement](target, skill, p.requirementParameter)))
+            {
+                print(p.name + " activated");
+                damage += (int)(baseDamage * p.valueBonus);
+            }
+        }
+        return damage;
+    }
+
     public void SkillEffect(Unit target)
     {
         ApplyPassives();
@@ -57,6 +72,9 @@ abstract public class SkillComponent : MonoBehaviour {
         {
             int crit = (Random.Range(0, 255) + skill.critModifier) > (255 * .95f) ? 2 : 1;
             int damage = (int)((skill.modifierPower * caster.stats.stats[skill.attackType] + skill.flatPower) / target.stats.stats[skill.defenseType] * target.stats.resistances[skill.element]) * crit;
+
+            damage = ApplyDamagePassives(damage, target);
+
             if (crit == 2 && damage > 0)
                 print(target.baseMonster.monsterName + " takes " + damage + "!");
             else if (damage == 0)

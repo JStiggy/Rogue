@@ -6,7 +6,7 @@ public class PassiveFilters {
 
     public delegate bool StatFilters(Unit unit, int value);
     public delegate bool SkillFilters(Skill skill, int value);
-    public delegate bool DamageFilter(Unit attacker, Unit defender, Skill skill, int value);
+    public delegate bool DamageFilter(Unit defender, Skill skill, int value);
     public List<StatFilters> statFilters;
     public List<SkillFilters> skillFilters;
     public List<DamageFilter> damageFilters;
@@ -20,6 +20,9 @@ public class PassiveFilters {
         skillFilters = new List<SkillFilters>();
         skillFilters.Add(IsElement); skillFilters.Add(NotElement); skillFilters.Add(IsType);
         skillFilters.Add(IsDamagingType); skillFilters.Add(IsHealingType); skillFilters.Add(IsPhysical);
+
+        damageFilters = new List<DamageFilter>();
+        damageFilters.Add(TargetAboveHealth); damageFilters.Add(TargetBelowHealth);
     }
 
     //Can be called directly
@@ -64,7 +67,7 @@ public class PassiveFilters {
         return tmp;
     }
 
-    //Delegates for SkillFilter
+    //Delegates for SkillFilter, these can be used to apply statust alterations
     public bool IsElement(Skill skill, int value)
     {
         return skill.element == value;
@@ -93,6 +96,17 @@ public class PassiveFilters {
     public bool IsPhysical(Skill skill, int value)
     {
         return IsElement(skill, 0) && IsDamagingType(skill, 0);
+    }
+
+    //Delegates for DamageFilters these alter damage dealt
+    public bool TargetAboveHealth(Unit target, Skill skill, int value)
+    {
+        return (target.currentHealth / target.baseMonster.health) * 100 >= value;
+    }
+
+    public bool TargetBelowHealth(Unit target, Skill skill, int value)
+    {
+        return (target.currentHealth / target.baseMonster.health) * 100 <= value;
     }
 
 }

@@ -4,11 +4,16 @@
 		<Passive>
       <name>Strength Training</name>
       <description>Boost strength by a small amount</description>
+      <!-- 0: Stat altering passive 1: Skill altering passive 2: Damage altering passives -->
       <type> 0 </type>
+      <!-- Filter to use for effect to take place, -1 means no filter, refer to PassiveFilters.cs-->
       <requirement>-1</requirement>
+      <!-- Value to pass to filter ie 100 if effect takes place at 100% health-->
       <requirementParameter>-1</requirementParameter>
-      <valueBonus> -1 </valueBonus>
-      <!-- Stat altered by passive, these are multiplicative -->
+      <!-- Bonus to be applied, only has an effect on damage multipliers-->
+      <valueBonus> 0 </valueBonus>
+      <!-- If StatPassive - Stat altered by passive, these are multiplicative bonuses to the base stat, 
+           If Skill/Damage Passive, no effect-->
       <statBonus>
         <statBonus> .1 </statBonus>
         <statBonus> 0 </statBonus>
@@ -16,13 +21,14 @@
         <statBonus> 0 </statBonus>
       </statBonus>
 
-      <!-- Resistances altered by passive, these are additive -->
+      <!-- Resistances altered by passive, these are additive
+           If Skill/Damage Passive, no effect-->
       <resistanceBonus>
-
       </resistanceBonus>
 
+      <!-- Status Resistances altered by passive, these are additive
+           If Skill these are instead used as ailment chance out of 255-->
       <statusBonus>
-
       </statusBonus>
     </Passive>
 
@@ -30,11 +36,16 @@
     <Passive>
       <name>Peerless</name>
       <description>Boost strength greatly when undamaged</description>
+       <!-- 0: Stat altering passive 1: Skill altering passive 2: Damage altering passives -->
       <type> 0 </type>
+       <!-- Filter to use for effect to take place, -1 means no filter, refer to PassiveFilters.cs-->
       <requirement>0</requirement>
+       <!-- Value to pass to filter ie 100 if effect takes place at 100% health-->
       <requirementParameter>100</requirementParameter>
+       <!-- Bonus to be applied, only has an effect on damage multipliers-->
       <valueBonus> 0 </valueBonus>
-      <!-- Stat altered by passive, these are multiplicative -->
+       <!-- If StatPassive - Stat altered by passive, these are multiplicative bonuses to the base stat, 
+           If Skill/Damage Passive, no effect-->
       <statBonus>
         <statBonus> .85 </statBonus>
         <statBonus> 0 </statBonus>
@@ -42,13 +53,14 @@
         <statBonus> 0 </statBonus>
       </statBonus>
 
-      <!-- Resistances altered by passive, these are additive -->
+       <!-- Resistances altered by passive, these are additive
+           If Skill/Damage Passive, no effect-->
       <resistanceBonus>
-
       </resistanceBonus>
 
+       <!-- Status Resistances altered by passive, these are additive
+           If Skill these are instead used as ailment chance out of 255-->
       <statusBonus>
-
       </statusBonus>
     </Passive>
 
@@ -139,7 +151,7 @@
       </statusBonus>
     </Passive>
 
-    <!-- 4 Virulent: Moderate chance to inflict poison on physical attacks-->
+    <!-- 5 Virulent: Moderate chance to inflict poison on physical attacks-->
     <Passive>
       <name>Virulent</name>
       <description>Moderate chance to inflict poison on physical attacks</description>
@@ -168,6 +180,48 @@
         <statusBonus> 0 </statusBonus>
       </statusBonus>
     </Passive>
+
+    <!-- 6 Executioner: Deal increased damage against weakened foes-->
+		<Passive>
+      <name>Executioner</name>
+      <description>Deal increased damage against weakened foes</description>
+      <type> 2 </type>
+      <requirement>1</requirement>
+      <requirementParameter>25</requirementParameter>
+      <valueBonus> 1 </valueBonus>
+      
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+      </statBonus>
+      
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus> 
+      </resistanceBonus>
+      
+      <statusBonus>
+      </statusBonus>
+    </Passive>
+    
+    <!-- 7 First Strike: Deal increased damage against full health targets-->
+		<Passive>
+      <name>First Strike</name>
+      <description>Deal increased damage against weakened foes</description>
+      <type> 2 </type>
+      <requirement>0</requirement>
+      <requirementParameter>100</requirementParameter>
+      <valueBonus> .75 </valueBonus>
+      
+      <!-- Stat altered by passive, these are multiplicative -->
+      <statBonus>
+      </statBonus>
+      
+      <!-- Resistances altered by passive, these are additive -->
+      <resistanceBonus> 
+      </resistanceBonus>
+      
+      <statusBonus>
+      </statusBonus>
+    </Passive>  
 
   </Passives>
 </PassiveData>
