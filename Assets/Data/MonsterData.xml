@@ -90,9 +90,7 @@
       </skills>
 
       <passives>
-        <passives> 0 </passives>
-        <passives> 6 </passives>
-        <passives> 7 </passives>
+        <passives> 5 </passives>
       </passives>
     </Monster>
     

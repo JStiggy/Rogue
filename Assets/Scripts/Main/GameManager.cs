@@ -109,7 +109,6 @@ public class GameManager : MonoBehaviour
 
     public void DecrementInventory(int index)
     {
-        print("Decrementing: " + index);
         if (index == -1) return;
         inventory[index].remainingUses--;
         if(inventory[index].remainingUses <= 0)

@@ -18,17 +18,24 @@ public abstract class Unit : MonoBehaviour
 
     public abstract void UseSkill(int index, int itemIndex = -1);
 
-    public void  ApplyEffects()
+    public void ApplyEffects()
+    {
+        ApplyPassives();
+        ApplyStatus();
+        StartCoroutine("StartTurn");
+    }
+
+    public void ApplyPassives()
     {
         stats = baseMonster.Clone();
 
-        foreach(int i in baseMonster.passives)
+        foreach (int i in baseMonster.passives)
         {
             Passive p = GameManager.Manager.gameLibrary.passiveData.Passives[i];
-            if( p.type == 0 && (p.requirement == -1 || GameManager.Manager.gameLibrary.passiveFilters.statFilters[p.requirement](this, p.requirementParameter)))
+            if (p.type == 0 && (p.requirement == -1 || GameManager.Manager.gameLibrary.passiveFilters.statFilters[p.requirement](this, p.requirementParameter)))
             {
-                
-                for(int j = 0; j < p.statBonus.Length;++j)
+
+                for (int j = 0; j < p.statBonus.Length; ++j)
                 {
                     stats.stats[j] += (int)(baseMonster.stats[j] * p.statBonus[j]);
                 }
@@ -42,7 +49,11 @@ public abstract class Unit : MonoBehaviour
                 }
             }
         }
-        StartCoroutine("StartTurn");
+    }
+
+    public void ApplyStatus()
+    {
+
     }
 
     public IEnumerator MoveTowards(Vector3 deltaPosition, GameObject other)

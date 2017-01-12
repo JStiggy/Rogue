@@ -20,7 +20,6 @@ abstract public class SkillComponent : MonoBehaviour {
             Passive p = GameManager.Manager.gameLibrary.passiveData.Passives[i];
             if (p.type == 1 && (p.requirement == -1 || GameManager.Manager.gameLibrary.passiveFilters.skillFilters[p.requirement](skill, p.requirementParameter)))
             {
-                print(p.name + " activated");
                 for (int j = 0; j < skill.status.Length; ++j)
                 {
                     skill.status[j] += p.statusBonus[j];
@@ -71,7 +70,8 @@ abstract public class SkillComponent : MonoBehaviour {
         if (skill.modifierPower > 0 || skill.flatPower > 0)
         {
             int crit = (Random.Range(0, 255) + skill.critModifier) > (255 * .95f) ? 2 : 1;
-            int damage = (int)((skill.modifierPower * caster.stats.stats[skill.attackType] + skill.flatPower) / target.stats.stats[skill.defenseType] * target.stats.resistances[skill.element]) * crit;
+            int damage = (int)((skill.modifierPower * caster.stats.stats[skill.attackType] * Mathf.Pow(1.25f, caster.status[skill.attackType]) + skill.flatPower) / 
+                               (target.stats.stats[skill.defenseType]* Mathf.Pow(1.25f, target.status[skill.defenseType])) * target.stats.resistances[skill.element]) * crit;
 
             damage = ApplyDamagePassives(damage, target);
 
@@ -92,7 +92,7 @@ abstract public class SkillComponent : MonoBehaviour {
     {
         if (skill.modifierPower > 0 || skill.flatPower > 0)
         {
-            int healing = (int)(skill.modifierPower * caster.stats.stats[skill.attackType] + skill.flatPower);
+            int healing = (int)(skill.modifierPower * caster.stats.stats[skill.attackType] * Mathf.Pow(1.25f, caster.status[skill.attackType]) + skill.flatPower);
             print(target.stats.monsterName + " is healed for " + healing + "!");
             target.currentHealth = Mathf.Clamp(target.currentHealth + healing, 0, target.baseMonster.health);
         }
@@ -101,7 +101,41 @@ abstract public class SkillComponent : MonoBehaviour {
 
     public void ApplyStatus(Unit target)
     {
-        //To be implemented;
+        for(int i = 0; i < skill.status.Length; ++i)
+        {
+            //Attempt to remove status increase buffs
+            if(skill.status[i] < 0)
+            {
+                if(Random.Range(0,256) <= -skill.status[i]) { 
+                
+                    if(i<4)
+                    {
+                        target.status[i] = Mathf.Clamp(++target.status[i], -3, 3);
+                    }
+                    else
+                    {
+                        target.status[i] = Mathf.Clamp(--target.status[i], 0, 1);
+                    }
+                    print("Status applied: " + target.status[i]);
+                }
+            }
+            //Attempt to inflict status
+            else if(skill.status[i] > 0)
+            {
+                if (Random.Range(0, 256) <= skill.status[i]-target.stats.statusResistances[i])
+                {
+                    if (i < 4)
+                    {
+                        target.status[i] = Mathf.Clamp(--target.status[i], -3, 3);
+                    }
+                    else
+                    {
+                        target.status[i] = Mathf.Clamp(++target.status[i], 0, 1);
+                    }
+                    print("Status inflicted: " + target.status[i]);
+                }
+            }
+        }
 
     }
 
